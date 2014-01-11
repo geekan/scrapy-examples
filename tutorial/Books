@@ -1,0 +1,429 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<link rel="icon" href="/img/mozilla.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="/img/mozilla.ico" type="image/x-icon" />
+
+<link rel="stylesheet" type="text/css" href=http://o.aolcdn.com/os/dmoz/editors/css/dmoznew.css />
+<style>
+.remBld {float:left; font-weight:bold; margin-right:5px; font-size:17px;}
+#_alt_ctrl_ALL, #_alt_ctrl_Z {border-right:none !important;}
+ul.right_align {float:left;}
+</style>
+<script type="text/javascript" src="http://o.aolcdn.com/os/dmoz/editors/scripts/jquery.js"></script>
+</head>
+<body dir="LTR">
+
+<div class="none">
+<!-- SiteCatalyst code version: H.7.  Copyright 1997-2007 Omniture, Inc. More info available at http://www.omniture.com -->
+<script type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script>
+<!-- End SiteCatalyst code version: H.2. -->
+</div>
+
+<div id="doc"  class="nodViewN">
+	<div id="hd" style="border-bottom:0;">
+    	<a id="logo" class="logoN" href="/" alt="dmoz logo" title="open directory project"></a>
+        <div id="partnership">
+        	<img width="83" height="24" align="middle" alt="In Partnership with AOL Search" src="http://o.aolcdn.com/os/dmoz/img/aolsearch.gif">
+        </div>
+    </div>
+    <div id="hd-bar">
+    	<div class="float-l">&nbsp;</div>
+        <div class="float-r">
+            <a style="font-weight:700" href="/docs/en/about.html">about dmoz</a> | 
+            <a href="http://blog.dmoz.org/">dmoz blog</a> | 
+            
+			<a href="/public/suggest?cat=Computers/Programming/Languages/Python/Books">suggest URL</a> |
+                        
+
+			<a href="/public/update?cat=Computers/Programming/Languages/Python/Books">update listing</a> |
+			
+			<a href="/public/apply?cat=Computers/Programming/Languages/Python/Books">become an editor</a> |
+			
+            <a href="/public/abuse?cat=Computers/Programming/Languages/Python/Books&lang=en">report abuse/spam</a> | 
+            <a href="/help/en/helpmain.html">help</a>
+        </div>
+       
+    </div>
+    <div id="bd-cross">
+    	<form class="center mb1em" action="/search" method="get">
+            <input size="45" name="q" class="searchNod" >
+            <input type=submit value="Search" class="btn" >
+            <select name="cat" class="selectNod" >
+			   
+               <option value="all" selected id="all-yes"><label for="all-yes">the entire directory</label></option>
+			   
+                 <option value="Computers/Programming/Languages/Python/Books"  id="all-no"><label for="all-no">only in Python/Books</label></option>
+                 
+            </select>
+            <input type=hidden name=all value="no" >
+        </form>
+
+        <div class="navigate" style="">
+            <div class="descript">
+
+                    <div id="descript" class="descriptN"><a href="/desc/Computers/Programming/Languages/Python/Books">Description</a></div>
+
+            </div>
+            <ul class="navigate">
+                <li class="first">
+
+                    <a href="/">Top</a></li>
+<li><b>: </b><a href='/Computers/'>Computers</a></li><li><b>: </b><a href='/Computers/Programming/'>Programming</a></li><li><b>: </b><a href='/Computers/Programming/Languages/'>Languages</a></li><li><b>: </b><a href='/Computers/Programming/Languages/Python/'>Python</a></li>
+                        <li class="last">
+                            <strong><span class='remBld'>: </span>Books</strong>&nbsp;<em>(22)</em>
+                        </li>
+
+            </ul>
+            <title>Open Directory - Computers: Programming: Languages: Python: Books</title>
+        </div>
+        
+        <div class="clear"></div>		
+        
+			<!-- <span><img src='/img/dividerN.gif' style="height:2px;float:left;width:100%" /></span> -->
+			<hr />
+		
+        
+            <fieldset class="fieldcap">
+                <legend>See also:</legend>
+                <ul class="directory">
+                
+                	<li>
+                        <a href="/Computers/Programming/Languages/Python/Resources/">Computers: Programming: Languages: Python: Resources</a> 
+                        <em>(5)</em>
+                    </li>
+                
+                	<li>
+                        <a href="/Computers/Programming/Languages/Ruby/Books/">Computers: Programming: Languages: Ruby: Books</a> 
+                        <em>(7)</em>
+                    </li>
+                
+                </ul>
+            </fieldset>
+        
+        
+            <fieldset class="fieldcap fieldcapN">
+                <legend>This category in other languages:</legend>
+                <ul class="language">
+                	
+                    <li>
+                    	<a href="/World/Deutsch/Computer/Programmieren/Sprachen/Python/B%C3%BCcher/">German</a>
+                        <em>(7)</em>
+					</li>
+                    
+                    <li>
+                    	<a href="/World/Russian/%D0%9A%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80%D1%8B/%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5/%D0%AF%D0%B7%D1%8B%D0%BA%D0%B8/Python/%D0%9A%D0%BD%D0%B8%D0%B3%D0%B8/">Russian</a>
+                        <em>(3)</em>
+					</li>
+                    
+                </ul>
+            </fieldset>
+        
+        			
+			<span><img src='http://o.aolcdn.com/os/dmoz/img/dividerN.gif' style="height:2px;float:left;width:100%" /></span>
+			<fieldset class="fieldcap">
+        	<ul class="directory-url" style="margin-left:0;">
+            
+				<li>
+			
+                                            <a href="http://www.pearsonhighered.com/educator/academic/product/0,,0130260363,00%2Ben-USS_01DBC.html">Core Python Programming</a> 
+			
+                    - By Wesley J. Chun; Prentice Hall PTR, 2001, ISBN 0130260363. For experienced developers to improve extant skills; professional level examples. Starts by introducing syntax, objects, error handling, functions, classes, built-ins. [Prentice Hall]
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="http://www.brpreiss.com/books/opus7/html/book.html">Data Structures and Algorithms with Object-Oriented Design Patterns in Python</a> 
+			
+                    - The primary goal of this book is to promote object-oriented design using Python and to illustrate the use of the emerging object-oriented design patterns.
+A secondary goal of the book is to present mathematical tools just in time. Analysis techniques and proofs are presented as needed and in the proper context.
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="http://www.diveintopython.net/">Dive Into Python 3</a> 
+			
+                    - By Mark Pilgrim, Guide to Python 3  and its differences from Python 2. Each chapter starts with a real code sample and explains it fully. Has a comprehensive appendix of all the syntactic and semantic changes in Python 3
+
+
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="http://rhodesmill.org/brandon/2011/foundations-of-python-network-programming/">Foundations of Python Network Programming</a> 
+			
+                    - This book covers a wide range of topics. From raw TCP and UDP to encryption with TSL, and then to HTTP, SMTP, POP, IMAP, and ssh. It gives you a good understanding of each field and how to do everything on the network with Python.
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="http://www.techbooksforfree.com/perlpython.shtml">Free Python books</a> 
+			
+                    - Free Python books and tutorials.
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="http://www.freetechbooks.com/python-f6.html">FreeTechBooks: Python Scripting Language</a> 
+			
+                    - Annotated list of free online books on Python scripting language. Topics range from beginner to advanced.
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="http://greenteapress.com/thinkpython/">How to Think Like a Computer Scientist: Learning with Python</a> 
+			
+                    - By Allen B. Downey, Jeffrey Elkner, Chris Meyers; Green Tea Press, 2002, ISBN 0971677506. Teaches general principles of programming, via Python as subject language. Thorough, in-depth approach to many basic and intermediate programming topics. Full text online and downloads: HTML, PDF, PS, LaTeX. [Free, Green Tea Press]
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="http://www.network-theory.co.uk/python/intro/">An Introduction to Python</a> 
+			
+                    - By Guido van Rossum, Fred L. Drake, Jr.; Network Theory Ltd., 2003, ISBN 0954161769. Printed edition of official tutorial, for v2.x, from Python.org. [Network Theory, online]
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="http://www.freenetpages.co.uk/hp/alan.gauld/">Learn to Program Using Python</a> 
+			
+                    - Book by Alan Gauld with full text online. Introduction for those learning programming basics: terminology, concepts, methods to write code. Assumes no prior knowledge but basic computer skills.
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="http://www.wiley.com/WileyCDA/WileyTitle/productCd-0471219754.html">Making Use of Python</a> 
+			
+                    - By Rashi Gupta; John Wiley and Sons, 2002, ISBN 0471219754. Covers language basics, use for CGI scripting, GUI development, network programming; shows why it is one of more sophisticated of popular scripting languages. [Wiley]
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="http://hetland.org/writing/practical-python/">Practical Python</a> 
+			
+                    - By Magnus Lie Hetland; Apress LP, 2002, ISBN 1590590066. Readable guide to ideas most vital to new users, from basics common to high level languages, to more specific aspects, to a series of 10 ever more complex programs. [Apress]
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="http://www.sysadminpy.com/">Pro Python System Administration</a> 
+			
+                    - By Rytis Sileika, ISBN13: 978-1-4302-2605-5,  Uses real-world system administration examples like manage devices with SNMP and SOAP, build a distributed monitoring system, manage web applications and parse complex log files, monitor and manage MySQL databases.
+
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="http://www.qtrac.eu/py3book.html">Programming in Python 3 (Second Edition)</a> 
+			
+                    - A Complete Introduction to the Python 3.
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="http://www.wiley.com/WileyCDA/WileyTitle/productCd-0764548077.html">Python 2.1 Bible</a> 
+			
+                    - By Dave Brueck, Stephen Tanner; John Wiley and Sons, 2001, ISBN 0764548077. Full coverage, clear explanations, hands-on examples, full language reference; shows step by step how to use components, assemble them, form full-featured programs. [John Wiley and Sons]
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="https://www.packtpub.com/python-3-object-oriented-programming/book">Python 3 Object Oriented Programming</a> 
+			
+                    - A step-by-step tutorial for OOP in Python 3, including discussion and examples of abstraction, encapsulation, information hiding, and raise, handle, define, and manipulate exceptions.
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="http://www.network-theory.co.uk/python/language/">Python Language Reference Manual</a> 
+			
+                    - By Guido van Rossum, Fred L. Drake, Jr.; Network Theory Ltd., 2003, ISBN 0954161785. Printed edition of official language reference, for v2.x, from Python.org, describes syntax, built-in datatypes. [Network Theory, online]
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="http://www.pearsonhighered.com/educator/academic/product/0,,0130409561,00%2Ben-USS_01DBC.html">Python Programming Patterns</a> 
+			
+                    - By Thomas W. Christopher; Prentice Hall PTR, 2002, ISBN 0130409561. Shows how to write large programs, introduces powerful design patterns that deliver high levels of robustness, scalability, reuse.
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="http://www.informit.com/store/product.aspx?isbn=0201616165&redir=1">Python Programming with the Java Class Libraries: A Tutorial for Building Web and Enterprise Applications with Jython</a> 
+			
+                    - By Richard Hightower; Addison-Wesley, 2002, 0201616165. Begins with Python basics, many exercises, interactive sessions. Shows programming novices concepts and practical methods. Shows programming experts Python's abilities and ways to interface with Java APIs. [publisher website]
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="http://www.pearsonhighered.com/educator/academic/product/0,,0201748843,00%2Ben-USS_01DBC.html">Python: Visual QuickStart Guide</a> 
+			
+                    - By Chris Fehily; Peachpit Press, 2002, ISBN 0201748843. Task-based, step-by-step visual reference guide, many screen shots, for courses in digital graphics; Web design, scripting, development; multimedia, page layout, office tools, operating systems. [Prentice Hall]
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="http://www.informit.com/store/product.aspx?isbn=0672317354">Sams Teach Yourself Python in 24 Hours</a> 
+			
+                    - By Ivan Van Laningham; Sams Publishing, 2000, ISBN 0672317354. Split into 24 hands-on, 1 hour lessons; steps needed to learn topic: syntax, language features, OO design and programming, GUIs (Tkinter), system administration, CGI. [Sams Publishing]
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="http://gnosis.cx/TPiP/">Text Processing in Python</a> 
+			
+                    - By David Mertz; Addison Wesley. Book in progress, full text, ASCII format. Asks for feedback. [author website, Gnosis Software, Inc.]
+                    
+                </li>
+			
+				<li>
+			
+                                            <a href="http://www.informit.com/store/product.aspx?isbn=0130211192">XML Processing with Python</a> 
+			
+                    - By Sean McGrath; Prentice Hall PTR, 2000, ISBN 0130211192, has CD-ROM. Methods to build XML applications fast, Python tutorial, DOM and SAX, new Pyxie open source XML processing library. [Prentice Hall PTR]
+                    
+                </li>
+			
+            </ul>
+        </fieldset>
+        
+        
+
+	<span><img src='http://o.aolcdn.com/os/dmoz/img/dividerN.gif' style="height:2px;float:left;width:100%" /></span>
+		
+        <fieldset class="fieldcap fieldcapRn" style="font-size:1.2em; margin-top:11px;">
+        	
+					<ul class="disc-large">
+					        <div class="float-l">
+			
+                    <li>Usenet comp.lang.python 
+					- <a href="news:comp.lang.python">news: </a>
+					- <a href="http://groups.google.com/group/comp.lang.python">Google Groups</a></li>
+			
+                    <li>Usenet comp.lang.python.announce 
+					- <a href="news:comp.lang.python.announce">news: </a>
+					- <a href="http://groups.google.com/group/comp.lang.python.announce">Google Groups</a></li>
+			
+					</div>
+					</ul>
+			
+			
+                  
+			<ul class="disc-large">
+				<div class="float-l">
+				<!--<br>-->
+				<li >
+				<span style="margin-right:140px; font-size:16px;">
+				"<b>Books</b>"&nbsp;search&nbsp;on:&nbsp;&nbsp;
+				
+	            <a href="http://search.aol.com/aol/search?query=Books" class="srchOnFrstLnk">AOL</a>&nbsp;-
+<a href="http://search.ask.com/web?q=Books">Ask</a>&nbsp;-
+<a href="http://www.bing.com/search?q=Books">Bing</a>&nbsp;-
+<a href="http://gigablast.com/search?q=Books">Gigablast</a>&nbsp;-
+<a href="http://www.google.com/search?q=Books">Google</a>&nbsp;-
+<a href="http://search.lycos.com/?query=Books">Lycos</a>&nbsp;-
+<a href="http://search.yahoo.com/bin/search?p=Books">Yahoo</a>&nbsp;-
+<a href="http://new2.yippy.com/search?query=Books">Yippy</a> 				
+				
+				</li>
+	            </div>
+			
+		        <div class="float-r" style="float:right; margin-top:2px;">
+			
+
+	            </div>
+				
+            </ul>
+
+        </fieldset>
+		<span><img src='http://o.aolcdn.com/os/dmoz/img/dividerN.gif' style="height:2px;float:left;width:100%" /></span>
+        <fieldset class="fieldcap center">
+        	
+        	<span class="volEditN">
+        	
+        	<a href="/public/apply?cat=Computers/Programming/Languages/Python/Books">Volunteer</a> to edit this category.
+        	
+        	</span>
+        	
+        	
+        </fieldset>
+	  
+		<a href="/public/apply?cat=Computers/Programming/Languages/Python/Books"><img src="http://o.aolcdn.com/os/dmoz/img/home_attribute.gif"></img></a>
+	  
+
+        <div class="float-r">
+        	<img src="/img/moz/obooksm.gif" width = 84 height = 55 alt="&#x005B;Book Mozilla]">
+        </div>
+    </div>
+    <div id="ft">
+    	
+        
+            <span class="float-l">Copyright &copy; 1998-2014 AOL Inc.</span>
+        
+        <span class="float-r"><a href="/docs/en/termsofuse.html" style="font-size:.9em;">Terms of Use</a></span>
+    </div>
+    <div id="ft-bar" class="ft-barN" style="color:#000; font-family:times New Roman;font-size:16px;">
+    	<b>Visit our sister sites</b>&nbsp;&nbsp;<a href="http://www.mozilla.org/">mozilla.org</a>&nbsp;|&nbsp;<a href="http://musicmoz.org/">MusicMoz</a>&nbsp;|&nbsp;<a href="http://en.wikipedia.org/">Wikipedia</a><br><br>
+    	<div  class="ft-barUpN">Last update: 
+		
+                                October 17, 2013 at 20:47:38 UTC
+		
+		- <a href="/editors/editcat/index?cat=Computers/Programming/Languages/Python/Books">edit</a></div>
+    </div>
+</div>
+<div id="omniture">
+<script type="text/javascript">
+function runOmni(){(function(){var F,t,n,v,p,q,u,o,i,f,D,d,k,c,b,x,g,E,s,z,C,m,r,a,l,B,e,w,A,y,j,h;F=location.protocol.toLowerCase();t=location.hostname.toLowerCase();n=location.port;v=location.pathname.toLowerCase();p=location.search.toLowerCase();q=document.title.toLowerCase();s_265.pfxID="odp";s_265.server=t;s_265.channel="us.dmozodp";s_265.charSet="UTF-8";s_265.linkInternalFilters="aol.com,javascript:,dmoz.org";u=t.split(".");o=(u.length>1)?u[u.length-2]+"."+u[u.length-1]:"";if((o==="dmoz.org")||(t+":"+n==="dmozqa-m01.ihost.aol.com:8081")||(t+":"+n==="10.146.172.49:9099")){s_265.prop12=F+"//"+t+v;i=(v.indexOf("/world/")>-1)?1:0;f=v.split("/");D=(i===1)?parseInt(f.length,10)-4:parseInt(f.length,10)-2;d=(f[f.length-1].length>0)?f[f.length-1].split(".")[0]:" - ";k=(f[f.length-1].length>0)?f[f.length-1]:" - ";c=(i===1)?f[3]:f[1];b=(i===1)?f[4]:f[2];if(i===0){x="english"}else{if((i===1)&&(D===-1)){x="world top"}else{if((i===1)&&(D>-1)){x=f[2]}}}s_265.prop16=x;j=(D>0)?"level-"+D:"level-0";switch(D){case -1:A=t+" - world top";y=A;h=A;break;case 0:if(d!==" - "){A="utilities";y="general info";h=t+" - "+d}else{A=t+" - top";y=A;h=A}break;case 1:A=c;y="top";h=(d!==" - ")?h=A+" - "+d:h="category main";break;case 2:A=c;y=b;h=(d!==" - ")?h=A+" - "+y+" - "+d:h="subcategory main";break;default:A=c;y=b;h=(d!==" - ")?h=A+" - "+y+" - "+d:h="level-"+D+" main";break}if(t==="search.dmoz.org"){A="utilities";y="search";j="level-0";h=d+" - home";g=((d==="search")&&(p.split("=")[0]==="?search"))?1:0;if(g===1){E=s_265.getQueryParam("search","",p);s_265.eVar11="sTerms:f|"+E;s_265.prop18=(s_265.getQueryParam("all").toLowerCase()!=="yes")?s_265.getQueryParam("cat").toLowerCase():"";s_265.prop18=s_265.prop18||"all";s=s_265.getQueryParam("t").toLowerCase();z=s_265.getQueryParam("morecat").toLowerCase();if(s==="c"||s==="s"||s==="b"){s_265.prop19=s}else{s_265.prop19=(z===1)?"c":"b"}C=(parseInt(s_265.getQueryParam("Kids"),10)===1)?"kids":"none";m=(parseInt(s_265.getQueryParam("Teens"),10)===1)?"teens":"none";r=(parseInt(s_265.getQueryParam("Mteens"),10)===1)?"mteens":"none";s_265.prop20=C+"|"+m+"|"+r;a=((s_265.prop19!=="c")&&(z.length===0)&&(s_265.getQueryParam("co").length===0))?((parseInt(s_265.getQueryParam("start")/20,10)+1)+""):(z.length===0)?((parseInt(s_265.getQueryParam("start")/25,10)+1)+""):((parseInt(s_265.getQueryParam("morecat")/25,10)+1)+"");s_265.prop21="page "+a;h="search results";l=(((a*1)===1)&&(z.length===0)&&(s_265.getQueryParam("start","",document.referrer).length===0))?1:0;if(l===1){B=(s.length>0)?"advanced search":((s.length===0)&&(s_265.getQueryParam("cat").length>0))?"branch search":"standard search";s_265.events="event1";s_265.eVar1=B}}e=1}if(e!==1){switch(c){case"help":A="utilities";y="help";j="level-0";h=(d!==" - ")?"dmoz help - "+d:"dmoz help - helpmain";e=1;break;case"profiles":A="utilities";y="profiles";j="level-0";h="dmoz - user profile";s_265.mmxtitle=h;s_265.mmxcustom="http://www.dmoz.org/profiles/user.html";e=1;break;case"become_an_editor":case"user-banners":case"awards":A="utilities";y="general info";j="level-0";h="dmoz - general info - "+q;e=1;break;case"guidelines":A="utilities";y="editors";j="level-0";h=(D>1)?"editors - "+c+" - "+b+" - "+q:"editors guidelines - "+q;e=1;break;case"newsletter":j="level-0";switch(D){case 1:y="newsletter article archive";h=y;break;case 2:h="newsletter "+y+" - "+q;break}e=1;break;case"erz":A="utilities";y="editors";j="level-0";h=(D>1)?"erz - "+b+" - "+q:"erz - top - "+q;e=1;break}}if(e!==1){if((t==="www.dmoz.org")&&(D===0)&&(d==="reinstate")){A="utilities";y="editors";h="editors - "+q;e=1}if(t==="report-abuse.dmoz.org"){A="utilities";y="report abuse";j="level-0";h=((D===0)&&(d==="faq"))?"dmoz report abuse system faq":"dmoz report abuse system";e=1}else{if(t==="rdf.dmoz.org"){A="utilities";y="rdf";j="level-0";if((D===0)&&(d===" - ")){h="rdf - main"}else{if((D===1)&&(d===" - ")){h="rdf - file index"}else{if((D===1)&&(d!==" - ")){h="rdf - "+d}}}e=1}}}if(e!==1){if((c==="cgi-bin")&&(t!=="search.dmoz.org")){A="utilities";j="level-0";switch(d){case"apply":case"forgot":y="editors";h=(d==="forgot")?"editors - password reminder form":(s_265.getQueryParam("submit").length===0)?"editors - application info":"editors - application";e=1;break;case"add":case"update":case"update2":case"update3":case"reinstate":y="editors";if(d==="add"){h="editors - submit a site instructions"}else{if(d==="update"){h="editors - update listing instructions"}else{if(d==="update2"){h="editors - update listing form"}else{if(d==="update3"){h="editors - update listing form received"}else{if(d==="reinstate"){h="editors - account reinstatement form received"}}}}}e=1;break;case"send":case"send2":y="editors";h=(d==="send")?"send editors feedback":"editors feedback received";e=1;break}}}if(e!==1){if((k==="desc.html")||(k==="faq.html")){w=(k==="desc.html")?"description":"faq";h=(D===1)?"branch category ":(D===2)?"branch subcategory ":"branch level-"+D+" ";h=h+w}}s_265.trackExternalLinks=false;s_265.mmxgo=true;s_265.prop1=A;s_265.prop2=y;s_265.prop17=j;s_265.pageName=h;s_265.t()}}())}var s_account="aoldmozodp,aolsvc";(function(){var b=document,a=b.createElement("script");a.type="text/javascript";a.src=(location.protocol==="https:"?"https://s":"http://o")+".aolcdn.com/omniunih.js";b.getElementsByTagName("head")[0].appendChild(a)}());
+</script>
+</div>
+</body>
+</html>
+
