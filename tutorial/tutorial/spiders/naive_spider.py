@@ -3,6 +3,7 @@ This is a naive spider only for example
 '''
 from scrapy.selector import Selector
 from scrapy.spider import BaseSpider as Spider
+from tutorial.items import TutorialItem
 
 
 class NaiveSpider(Spider):
@@ -34,7 +35,7 @@ class DmozSpider(Spider):
         sites = sel.xpath('//ul/li')
         items = []
         for site in sites:
-            item = DmozItem()
+            item = TutorialItem()
             item['title'] = site.xpath('a/text()').extract()
             item['link'] = site.xpath('a/@href').extract()
             item['desc'] = site.xpath('text()').extract()
