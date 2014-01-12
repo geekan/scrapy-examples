@@ -15,9 +15,9 @@ Using Scrapy to get Linkedin's person public profile.
 
 
 ### Dependency
-* Scrapy == 0.16
+* Scrapy == 0.20
 * pymongo 
-* BeautifulSoup, UnicodeDammit
+* BeautifulSoup4, UnicodeDammit
 
 
 ### usage
