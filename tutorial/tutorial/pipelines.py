@@ -9,6 +9,8 @@ from scrapy.contrib.exporter import XmlItemExporter
 
 class TutorialPipeline(object):
     def process_item(self, item, spider):
+        for field in item:
+            print field + ': ' + item[field][0]
         return item
 
 
@@ -17,12 +19,12 @@ class XmlExportPipeline(object):
     def __init__(self):
         self.files = {}
 
-     @classmethod
-     def from_crawler(cls, crawler):
-         pipeline = cls()
-         crawler.signals.connect(pipeline.spider_opened, signals.spider_opened)
-         crawler.signals.connect(pipeline.spider_closed, signals.spider_closed)
-         return pipeline
+    @classmethod
+    def from_crawler(cls, crawler):
+        pipeline = cls()
+        crawler.signals.connect(pipeline.spider_opened, signals.spider_opened)
+        crawler.signals.connect(pipeline.spider_closed, signals.spider_closed)
+        return pipeline
 
     def spider_opened(self, spider):
         file = open('%s_products.xml' % spider.name, 'w+b')
