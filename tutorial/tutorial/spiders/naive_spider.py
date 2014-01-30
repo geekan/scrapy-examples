@@ -1,3 +1,5 @@
+#coding:utf-8
+
 '''
 This is a naive spider only for example
 '''
