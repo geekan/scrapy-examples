@@ -45,9 +45,9 @@ class DmozItemSpider(Spider):
 
 class DoubanBookSpider(Spider):
     name = "douban_book"
-    allowed_domains = ["dmoz.org"]
+    allowed_domains = ["douban.com"]
     start_urls = [
-        "book.douban.com/tag/"
+        "http://book.douban.com/tag/"
     ]
 
     def parse(self, response):
