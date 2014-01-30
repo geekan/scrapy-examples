@@ -6,11 +6,11 @@ from scrapy.spider import BaseSpider as Spider
 from tutorial.items import TutorialItem
 
 
-class NaiveSpider(Spider):
+class PageRecorderSpider(Spider):
     '''
     Download resources from start_urls.
     '''
-    name = 'naive'
+    name = 'page_recorder'
     allowed_domains = ["dmoz.org"]
     start_urls = [
         "http://www.dmoz.org/Computers/Programming/Languages/Python/Books/",
@@ -22,8 +22,8 @@ class NaiveSpider(Spider):
         open(filename, 'wb').write(response.body)
 
 
-class DmozSpider(Spider):
-    name = "dmoz"
+class DmozItemSpider(Spider):
+    name = "dmoz_item"
     allowed_domains = ["dmoz.org"]
     start_urls = [
         "http://www.dmoz.org/Computers/Programming/Languages/Python/Books/",
