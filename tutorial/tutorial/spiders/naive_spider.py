@@ -41,3 +41,23 @@ class DmozItemSpider(Spider):
             item['desc'] = site.xpath('text()').extract()
             items.append(item)
         return items
+
+
+class DoubanBookSpider(Spider):
+    name = "dmoz_item"
+    allowed_domains = ["dmoz.org"]
+    start_urls = [
+        "book.douban.com/tag/"
+    ]
+
+    def parse(self, response):
+        sel = Selector(response)
+        sites = sel.xpath('//ul/li')
+        items = []
+        for site in sites:
+            item = TutorialItem()
+            item['title'] = site.xpath('a/text()').extract()
+            item['link'] = site.xpath('a/@href').extract()
+            item['desc'] = site.xpath('text()').extract()
+            items.append(item)
+        return items
