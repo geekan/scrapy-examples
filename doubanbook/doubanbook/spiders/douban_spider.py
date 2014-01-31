@@ -1,4 +1,6 @@
 import re
+import json
+
 
 from scrapy.selector import Selector
 try:
@@ -20,11 +22,24 @@ class DoubanBookSpider(CrawlSpider):
     start_urls = [
         "http://book.douban.com/tag/"
     ]
+    rules = [
+        Rule(sle(allow=("/subject/\d+/?$")), callback='parse_2'),
+        Rule(sle(allow=("/tag/[^/]+/?$", )), follow=True),
+        Rule(sle(allow=("/tag/$", )), follow=True),
+    ]
 
-    rules = (
-        Rule(sle(allow=("/tag/[^/]+/?$", )), callback="parse_1"),
-        Rule(sle(allow=("/tag/$", )), follow=True, process_request='_process_request'),
-    )
+    def parse_2(self, response):
+        items = []
+        sel = Selector(response)
+        sites = sel.css('#wrapper')
+        for site in sites:
+            item = DoubanbookItem()
+            item['title'] = site.css('h1 span::text').extract()[0]
+            item['link'] = response.url
+            items.append(item)
+            print repr(item).decode("unicode-escape")
+        # info('parsed ' + str(response))
+        return items
 
     def parse_1(self, response):
         # url cannot encode to Chinese easily.. XXX

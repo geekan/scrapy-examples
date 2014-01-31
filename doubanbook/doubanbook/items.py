@@ -13,3 +13,13 @@ class DoubanbookItem(Item):
     desc = Field()
     num = Field()
 
+
+class DoubanSubjectItem(Item):
+    title = Field()
+    link = Field()
+    info = Field()
+    rate = Field()
+    votes = Field()
+    content_intro = Field()
+    author_intro = Field()
+    tags = Field()
