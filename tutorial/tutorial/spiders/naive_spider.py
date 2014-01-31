@@ -81,8 +81,8 @@ class DoubanBookSpider(Spider):
     ]
     # NOTE: depth index is hidden.
     depth_class_list = [
-        '/tag/$',
-        '/tag/.+/?',
+        '.*/tag/?$',
+        '.*/tag/.+/?',
     ]
 
     def _cal_depth(self, response):
@@ -101,6 +101,7 @@ class DoubanBookSpider(Spider):
         sel = Selector(response)
         sites = sel.xpath('//tr/td')
         items = []
+        info('url:' + response.url + ' depth:' + str(self._cal_depth(response)))
         for site in sites:
             item = TutorialItem()
             item['title'] = site.xpath('a/text()').extract()
@@ -110,6 +111,5 @@ class DoubanBookSpider(Spider):
             item['num'] = site.xpath('b/text()').extract()
             #print repr(item).decode("unicode-escape")
 
-            info('Depth is ' + str(self._cal_depth(response)))
             items.append(item)
         return items
