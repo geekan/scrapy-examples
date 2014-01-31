@@ -73,6 +73,48 @@ class DmozItemSpider(Spider):
         return items
 
 
+class DoubanBookTagSpider(Spider):
+    name = "douban_tag_book"
+    allowed_domains = ["douban.com"]
+    start_urls = [
+        "http://book.douban.com/tag/"
+    ]
+    # NOTE: depth index is hidden.
+    depth_class_list = [
+        '.*/tag/?$',
+        '.*/tag/.+/?',
+    ]
+
+    def _cal_depth(self, response):
+        """
+        Calculate the depth of response, and call corresponding method or stop
+        crawl.
+        """
+        url = response.url
+        for depth, depth_regexp in enumerate(self.depth_class_list):
+            if re.match(depth_regexp, url):
+                return depth
+        # warn("Unknown url depth: " + url)
+        return -1
+
+    def parse(self, response):
+        sel = Selector(response)
+        sites = sel.xpath('//tr/td')
+        items = []
+        info('url:' + response.url + ' depth:' + str(self._cal_depth(response)))
+        for site in sites:
+            item = TutorialItem()
+            item['title'] = site.xpath('a/text()').extract()
+            base_url = get_base_url(response)
+            relative_url = site.xpath('a/@href').extract()
+            item['link'] = [urljoin(base_url, u) for u in relative_url]
+            item['num'] = site.xpath('b/text()').extract()
+            #print repr(item).decode("unicode-escape")
+
+            items.append(item)
+        return items
+
+
 class DoubanBookSpider(Spider):
     name = "douban_book"
     allowed_domains = ["douban.com"]
