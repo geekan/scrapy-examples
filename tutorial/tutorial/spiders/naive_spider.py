@@ -6,7 +6,8 @@ This is a naive spider only for example
 from scrapy.selector import Selector
 from scrapy.spider import BaseSpider as Spider
 from tutorial.items import TutorialItem
-
+from scrapy.utils.response import get_base_url
+from urlparse import urljoin
 
 class PageRecorderSpider(Spider):
     '''
@@ -45,6 +46,11 @@ class DmozItemSpider(Spider):
         return items
 
 
+def make_absolute_url(response, relative_url):
+    base_url = urlparse.urljoin(response)
+    return urljoin_rfc(base_url, relative_url)
+
+
 class DoubanBookSpider(Spider):
     name = "douban_book"
     allowed_domains = ["douban.com"]
@@ -59,7 +65,9 @@ class DoubanBookSpider(Spider):
         for site in sites:
             item = TutorialItem()
             item['title'] = site.xpath('a/text()').extract()
-            item['link'] = site.xpath('a/@href').extract()
+            base_url = get_base_url(response)
+            relative_url = site.xpath('a/@href').extract()
+            item['link'] = [urljoin(base_url, u) for u in relative_url]
             item['num'] = site.xpath('b/text()').extract()
             items.append(item)
         return items
