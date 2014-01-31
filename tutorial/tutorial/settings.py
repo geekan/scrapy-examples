@@ -11,7 +11,7 @@ BOT_NAME = 'tutorial'
 SPIDER_MODULES = ['tutorial.spiders']
 NEWSPIDER_MODULE = 'tutorial.spiders'
 ITEM_PIPELINES = {
-    'tutorial.pipelines.TutorialPipeline': 300,
+    'tutorial.pipelines.JsonWithEncodingPipeline': 300,
 }
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
