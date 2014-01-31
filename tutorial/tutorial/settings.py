@@ -17,8 +17,8 @@ ITEM_PIPELINES = {
 #USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
 
 DOWNLOADER_MIDDLEWARES = {
-    'tutorial.lib.middleware.CustomHttpProxyMiddleware': 400,
-    'tutorial.lib.middleware.CustomUserAgentMiddleware': 401,
+    'tutorial.misc.middleware.CustomHttpProxyMiddleware': 400,
+    'tutorial.misc.middleware.CustomUserAgentMiddleware': 401,
 }
 
 LOG_LEVEL = 'INFO'

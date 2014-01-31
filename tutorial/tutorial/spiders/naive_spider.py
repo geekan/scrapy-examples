@@ -24,18 +24,7 @@ from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor as sle
 
 
 from tutorial.items import TutorialItem
-
-
-def warn(msg):
-    log.msg(msg, level=log.WARNING)
-
-
-def info(msg):
-    log.msg(msg, level=log.INFO)
-
-
-def debug(msg):
-    log.msg(msg, level=log.DEBUG)
+from tutorial.misc.log import *
 
 
 class PageRecorderSpider(Spider):
@@ -125,7 +114,10 @@ class DoubanBookSpider(CrawlSpider):
         "http://book.douban.com/tag/"
     ]
 
-    rules = (Rule(sle(allow=("tag/.*/", )), callback="parse_items", follow=True),)
+    rules = (
+        Rule(sle(allow=("/tag/[^/]+/?$", )), callback="parse_1"),
+        Rule(sle(allow=("/tag/$", )), follow=True, process_request='_process_request'),
+    )
 
     # NOTE: depth index is hidden.
     depth_class_list = [
@@ -146,6 +138,15 @@ class DoubanBookSpider(CrawlSpider):
         # If the url pattern is unknown, then return -1.
         return -1
 
+    def parse_1(self, response):
+        # url cannot encode to Chinese easily.. XXX
+        info('parsed ' + str(response))
+
+    def _process_request(self, request):
+        info('process ' + str(request))
+        return request
+
+    '''
     def parse(self, response):
         sel = Selector(response)
         sites = sel.xpath('//tr/td')
@@ -163,3 +164,4 @@ class DoubanBookSpider(CrawlSpider):
 
             items.append(item)
         return items
+    '''
