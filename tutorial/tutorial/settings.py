@@ -13,7 +13,12 @@ NEWSPIDER_MODULE = 'tutorial.spiders'
 ITEM_PIPELINES = {
     'tutorial.pipelines.JsonWithEncodingPipeline': 300,
 }
-# Crawl responsibly by identifying yourself (and your website) on the user-agent
+#Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
+
+DOWNLOADER_MIDDLEWARES = {
+    'tutorial.lib.middleware.CustomHttpProxyMiddleware': 400,
+    'tutorial.lib.middleware.CustomUserAgentMiddleware': 401,
+}
 
 LOG_LEVEL = 'INFO'
