@@ -24,6 +24,18 @@ from scrapy import log
 from tutorial.items import TutorialItem
 
 
+def warn(*args, **kwargs):
+    log.msg(args, kwargs, level=log.INFO)
+
+
+def info(*args, **kwargs):
+    log.msg(args, kwargs, level=log.INFO)
+
+
+def debug(*args, **kwargs):
+    log.msg(args, kwargs, level=log.DEBUG)
+
+
 class PageRecorderSpider(Spider):
     '''
     Download resources from start_urls.
@@ -98,6 +110,6 @@ class DoubanBookSpider(Spider):
             item['num'] = site.xpath('b/text()').extract()
             #print repr(item).decode("unicode-escape")
 
-            print self._cal_depth(response)
+            info(self._cal_depth(response))
             items.append(item)
         return items
