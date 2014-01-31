@@ -13,7 +13,10 @@ from urlparse import urljoin
 
 
 from scrapy.selector import Selector
-from scrapy.spider import BaseSpider as Spider
+try:
+    from scrapy.spider import Spider
+except:
+    from scrapy.spider import BaseSpider as Spider
 from scrapy.utils.response import get_base_url
 from scrapy import log
 
@@ -79,8 +82,8 @@ class DoubanBookSpider(Spider):
         for depth, depth_regexp in enumerate(self.depth_class_list):
             if re.match(depth_regexp, url):
                 return depth
-        log.msg("Unknown url depth:", url)
-        return None
+        log.msg("Unknown url depth: " + url)
+        return -1
 
     def parse(self, response):
         sel = Selector(response)
@@ -93,5 +96,8 @@ class DoubanBookSpider(Spider):
             relative_url = site.xpath('a/@href').extract()
             item['link'] = [urljoin(base_url, u) for u in relative_url]
             item['num'] = site.xpath('b/text()').extract()
+            #print repr(item).decode("unicode-escape")
+
+            print self._cal_depth(response)
             items.append(item)
         return items

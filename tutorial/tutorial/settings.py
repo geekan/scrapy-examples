@@ -15,3 +15,5 @@ ITEM_PIPELINES = {
 }
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
+
+LOG_LEVEL = 'INFO'
