@@ -24,16 +24,16 @@ from scrapy import log
 from tutorial.items import TutorialItem
 
 
-def warn(*args, **kwargs):
-    log.msg(args, kwargs, level=log.INFO)
+def warn(msg):
+    log.msg(msg, level=log.WARNING)
 
 
-def info(*args, **kwargs):
-    log.msg(args, kwargs, level=log.INFO)
+def info(msg):
+    log.msg(msg, level=log.INFO)
 
 
-def debug(*args, **kwargs):
-    log.msg(args, kwargs, level=log.DEBUG)
+def debug(msg):
+    log.msg(msg, level=log.DEBUG)
 
 
 class PageRecorderSpider(Spider):
@@ -94,7 +94,7 @@ class DoubanBookSpider(Spider):
         for depth, depth_regexp in enumerate(self.depth_class_list):
             if re.match(depth_regexp, url):
                 return depth
-        log.msg("Unknown url depth: " + url)
+        # warn("Unknown url depth: " + url)
         return -1
 
     def parse(self, response):
@@ -110,6 +110,6 @@ class DoubanBookSpider(Spider):
             item['num'] = site.xpath('b/text()').extract()
             #print repr(item).decode("unicode-escape")
 
-            info(self._cal_depth(response))
+            info('Depth is ' + str(self._cal_depth(response)))
             items.append(item)
         return items
