@@ -12,7 +12,7 @@ from scrapy.contrib.spiders import CrawlSpider, Rule
 from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor as sle
 
 
-from doubanbook.items import DoubanbookItem
+from doubanbook.items import *
 from doubanbook.misc.log import *
 
 
@@ -33,11 +33,12 @@ class DoubanBookSpider(CrawlSpider):
         sel = Selector(response)
         sites = sel.css('#wrapper')
         for site in sites:
-            item = DoubanbookItem()
-            item['title'] = site.css('h1 span::text').extract()[0]
+            item = DoubanSubjectItem()
+            item['title'] = site.css('h1 span::text').extract()
             item['link'] = response.url
+            item['content_intro'] = site.css('#link-report .intro p::text').extract()
             items.append(item)
-            print repr(item).decode("unicode-escape")
+            print repr(item).decode("unicode-escape") + '\n'
         # info('parsed ' + str(response))
         return items
 
