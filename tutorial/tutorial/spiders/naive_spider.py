@@ -19,6 +19,8 @@ except:
     from scrapy.spider import BaseSpider as Spider
 from scrapy.utils.response import get_base_url
 from scrapy import log
+from scrapy.contrib.spiders import CrawlSpider, Rule
+from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor as sle
 
 
 from tutorial.items import TutorialItem
@@ -116,12 +118,15 @@ class DoubanBookTagSpider(Spider):
         return items
 
 
-class DoubanBookSpider(Spider):
+class DoubanBookSpider(CrawlSpider):
     name = "douban_book"
     allowed_domains = ["douban.com"]
     start_urls = [
         "http://book.douban.com/tag/"
     ]
+
+    rules = (Rule(sle(allow=("tag/.*/", )), callback="parse_items", follow=True),)
+
     # NOTE: depth index is hidden.
     depth_class_list = [
         '.*/tag/?$',
