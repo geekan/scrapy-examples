@@ -101,7 +101,8 @@ class DoubanBookTagSpider(Spider):
         sel = Selector(response)
         sites = sel.xpath('//tr/td')
         items = []
-        info('url:' + response.url + ' depth:' + str(self._cal_depth(response)))
+        info('url:' + response.url +
+             ' depth:' + str(self._cal_depth(response)))
         for site in sites:
             item = TutorialItem()
             item['title'] = site.xpath('a/text()').extract()
@@ -137,13 +138,15 @@ class DoubanBookSpider(Spider):
             if re.match(depth_regexp, url):
                 return depth
         # warn("Unknown url depth: " + url)
+        # If the url pattern is unknown, then return -1.
         return -1
 
     def parse(self, response):
         sel = Selector(response)
         sites = sel.xpath('//tr/td')
         items = []
-        info('url:' + response.url + ' depth:' + str(self._cal_depth(response)))
+        info('url:' + response.url +
+             ' depth:' + str(self._cal_depth(response)))
         for site in sites:
             item = TutorialItem()
             item['title'] = site.xpath('a/text()').extract()
