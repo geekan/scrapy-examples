@@ -1,13 +1,25 @@
 #coding:utf-8
 
 '''
-This is a naive spider only for example
+This tutorial include several spiders:
+    page_recorder
+    dmoz_item
+    douban_book
 '''
+
+
+import re
+from urlparse import urljoin
+
+
 from scrapy.selector import Selector
 from scrapy.spider import BaseSpider as Spider
-from tutorial.items import TutorialItem
 from scrapy.utils.response import get_base_url
-from urlparse import urljoin
+from scrapy import log
+
+
+from tutorial.items import TutorialItem
+
 
 class PageRecorderSpider(Spider):
     '''
@@ -46,17 +58,29 @@ class DmozItemSpider(Spider):
         return items
 
 
-def make_absolute_url(response, relative_url):
-    base_url = urlparse.urljoin(response)
-    return urljoin_rfc(base_url, relative_url)
-
-
 class DoubanBookSpider(Spider):
     name = "douban_book"
     allowed_domains = ["douban.com"]
     start_urls = [
         "http://book.douban.com/tag/"
     ]
+    # NOTE: depth index is hidden.
+    depth_class_list = [
+        '/tag/$',
+        '/tag/.+/?',
+    ]
+
+    def _cal_depth(self, response):
+        """
+        Calculate the depth of response, and call corresponding method or stop
+        crawl.
+        """
+        url = response.url
+        for depth, depth_regexp in enumerate(self.depth_class_list):
+            if re.match(depth_regexp, url):
+                return depth
+        log.msg("Unknown url depth:", url)
+        return None
 
     def parse(self, response):
         sel = Selector(response)
