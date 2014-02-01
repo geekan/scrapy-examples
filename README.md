@@ -3,14 +3,12 @@ scrapy-examples
 
 Multifarious scrapy examples.
 
-Tutorial
---------
+####Tutorial
 
     cd doubanbook
     scrapy crawl douban_book
 
-Depth
------
+####Depth
 
 There are several depths in the spider, and the spider gets
 real data from depth2.
@@ -19,8 +17,7 @@ real data from depth2.
 - Depth1: Urls like `http://book.douban.com/tag/外国文学` from depth0
 - Depth2: Urls like `http://book.douban.com/subject/1770782/` from depth1
 
-Avaiable Spiders
-----------------
+####Avaiable Spiders
 
 * linkedin
   * linkedin
@@ -32,8 +29,7 @@ Avaiable Spiders
 * doubanbook
   * douban_book
 
-PREREQUISITE
------------
+####PREREQUISITE
 
 * Scrapy 0.22
   > Check https://github.com/scrapy/scrapy
