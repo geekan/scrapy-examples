@@ -3,7 +3,7 @@ scrapy-examples
 
 Multifarious scrapy examples.
 
-Useage Spiders:
+Avaiable Spiders:
 
 * linkedin
   * linkedin
