@@ -5,7 +5,8 @@ Multifarious scrapy examples.
 
 ####Tutorial
 
-    cd doubanbook
+    git clone https://github.com/geekan/scrapy-examples
+    cd scrapy-examples/doubanbook
     scrapy crawl douban_book
 
 ####Depth
