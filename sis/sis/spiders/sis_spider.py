@@ -12,7 +12,7 @@ from scrapy.contrib.spiders import CrawlSpider, Rule
 from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor as sle
 
 
-from items import *
+from sis.items import *
 from misc.log import *
 
 
@@ -25,18 +25,19 @@ class sisSpider(CrawlSpider):
         ip_format % d for d in [143, 230]
     ]
     rules = [
-        # Rule(sle(allow=("/position_detail.php\?id=\d*.*", )), callback='parse_2'),
-        Rule(sle(allow=("/forum/thread-\d*-1-1\.html")), callback='parse_1'), Rule(sle(allow=("/forum/forum-\d*-1\.html")), follow=True, callback='parse_1'),
+        Rule(sle(allow=("/forum/thread-\d*-1-1\.html")), callback='parse_2'),
+        Rule(sle(allow=("/forum/forum-\d*-1\.html")), follow=True, callback='parse_1'),
     ]
 
     def parse_2(self, response):
         items = []
         sel = Selector(response)
-        sites = sel.css('.tablelist')
+        sites = sel.css('.postcontent')[0:1]
         for site in sites:
             item = SisItem()
-            item['sharetitle'] = site.css('.h #sharetitle::text').extract()
-            item['bottomline'] = site.css('.bottomline td::text').extract()
+            item['title'] = site.css('.postmessage h2::text').extract()
+            item['imgs'] = site.css('.postmessage img::attr(src)').extract()
+            item['torrents'] = site.css('.t_attachlist a[href*=attachment]').extract()
             # item['duty'] = site.css('.c .l2::text').extract()
             item['link'] = response.url
             items.append(item)

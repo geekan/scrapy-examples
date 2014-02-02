@@ -8,6 +8,8 @@ from scrapy.item import Item, Field
 class SisItem(Item):
     title = Field()
     link = Field()
+    imgs = Field()
+    torrents = Field()
     sharetitle  = Field()
     bottomline = Field()
     duty = Field()
