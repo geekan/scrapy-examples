@@ -12,8 +12,8 @@ from scrapy.contrib.spiders import CrawlSpider, Rule
 from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor as sle
 
 
-from sis.items import *
-from sis.misc.log import *
+from items import *
+from misc.log import *
 
 
 class sisSpider(CrawlSpider):
@@ -26,8 +26,7 @@ class sisSpider(CrawlSpider):
     ]
     rules = [
         # Rule(sle(allow=("/position_detail.php\?id=\d*.*", )), callback='parse_2'),
-        Rule(sle(allow=("/forum/thread-\d*-1-1\.html")), callback='parse_1'),
-        Rule(sle(allow=("/forum/forum-\d*-1\.html")), follow=True, callback='parse_1'),
+        Rule(sle(allow=("/forum/thread-\d*-1-1\.html")), callback='parse_1'), Rule(sle(allow=("/forum/forum-\d*-1\.html")), follow=True, callback='parse_1'),
     ]
 
     def parse_2(self, response):

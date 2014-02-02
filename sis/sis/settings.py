@@ -6,6 +6,11 @@
 #     http://doc.scrapy.org/en/latest/topics/settings.html
 #
 
+# I'm not sure below lines are needed, but add it first.. XXX
+import sys
+sys.path.append('../../misc')
+# from misc.log import *
+
 BOT_NAME = 'sis'
 
 SPIDER_MODULES = ['sis.spiders']
@@ -14,8 +19,8 @@ NEWSPIDER_MODULE = 'sis.spiders'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'sis (+http://www.yourdomain.com)'
 DOWNLOADER_MIDDLEWARES = {
-    'sis.misc.middleware.CustomHttpProxyMiddleware': 400,
-    'sis.misc.middleware.CustomUserAgentMiddleware': 401,
+    'misc.middleware.CustomHttpProxyMiddleware': 400,
+    'misc.middleware.CustomUserAgentMiddleware': 401,
 }
 
 ITEM_PIPELINES = {
