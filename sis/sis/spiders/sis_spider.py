@@ -18,14 +18,16 @@ from sis.misc.log import *
 
 class sisSpider(CrawlSpider):
     name = "sis"
-    allowed_domains = ["tencent.com"]
+    ip = "38.103.161.147"
+    allowed_domains = [ip]
+    ip_format = 'http://' + ip + '/forum/forum-%d-1.html'
     start_urls = [
-        "http://38.103.161.147/forum/forum-%d-1.html" % d for d in [143, 230]
+        ip_format % d for d in [143, 230]
     ]
     rules = [
         # Rule(sle(allow=("/position_detail.php\?id=\d*.*", )), callback='parse_2'),
-        Rule(sle(allow=("/forum/thread-\d*-1-1.html")), callback='parse_1'),
-        Rule(sle(allow=("/forum/forum-\d*-1.html")), follow=True, callback='parse_1', process_request='_process_request'),
+        Rule(sle(allow=("/forum/thread-\d*-1-1\.html")), callback='parse_1'),
+        Rule(sle(allow=("/forum/forum-\d*-1\.html")), follow=True, callback='parse_1'),
     ]
 
     def parse_2(self, response):
