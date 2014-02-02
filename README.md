@@ -29,6 +29,10 @@ real data from depth2.
   * douban_tag_book
 * doubanbook
   * douban_book
+* hrtencent
+  * hrtencent
+* sis
+  * sis
 
 ####PREREQUISITE
 
