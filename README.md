@@ -1,7 +1,9 @@
 scrapy-examples
 ==============
 
-Multifarious scrapy examples.
+Multifarious scrapy examples with integrated proxies and agents, which make you comfy to write a spider.
+
+Dont use it to do anything illegal!
 
 ####PREREQUISITE
 
