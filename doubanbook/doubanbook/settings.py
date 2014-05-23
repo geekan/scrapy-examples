@@ -6,6 +6,9 @@
 #     http://doc.scrapy.org/en/latest/topics/settings.html
 #
 
+import sys
+sys.path.append('../../misc')
+
 BOT_NAME = 'doubanbook'
 
 SPIDER_MODULES = ['doubanbook.spiders']

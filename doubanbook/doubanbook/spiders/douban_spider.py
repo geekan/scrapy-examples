@@ -13,7 +13,7 @@ from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor as sle
 
 
 from doubanbook.items import *
-from doubanbook.misc.log import *
+from misc.log import *
 
 
 class DoubanBookSpider(CrawlSpider):
