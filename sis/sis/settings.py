@@ -8,8 +8,14 @@
 
 # I'm not sure below lines are needed, but add it first.. XXX
 import sys
-sys.path.append('../../misc')
-# from misc.log import *
+import os
+from os.path import dirname
+path = dirname(dirname(os.path.abspath(os.path.dirname(__file__))))
+print(path+'/misc')
+sys.path.append(path+'/misc')
+print sys.path
+import misc
+from misc.log import *
 
 BOT_NAME = 'sis'
 

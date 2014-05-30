@@ -2,6 +2,14 @@ import re
 import json
 
 
+import sys
+import os
+from os.path import dirname
+path = dirname(dirname(dirname(os.path.abspath(os.path.dirname(__file__)))))
+print(path+'/misc')
+sys.path.append(path+'/misc')
+
+
 from scrapy.selector import Selector
 try:
     from scrapy.spider import Spider
@@ -10,7 +18,6 @@ except:
 from scrapy.utils.response import get_base_url
 from scrapy.contrib.spiders import CrawlSpider, Rule
 from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor as sle
-
 
 from sis.items import *
 from misc.log import *
