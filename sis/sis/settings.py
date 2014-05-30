@@ -11,10 +11,7 @@ import sys
 import os
 from os.path import dirname
 path = dirname(dirname(os.path.abspath(os.path.dirname(__file__))))
-print(path+'/misc')
-sys.path.append(path+'/misc')
-print sys.path
-import misc
+sys.path.append(path)
 from misc.log import *
 
 BOT_NAME = 'sis'

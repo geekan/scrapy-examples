@@ -1,13 +1,6 @@
 import re
 import json
-
-
 import sys
-import os
-from os.path import dirname
-path = dirname(dirname(dirname(os.path.abspath(os.path.dirname(__file__)))))
-print(path+'/misc')
-sys.path.append(path+'/misc')
 
 
 from scrapy.selector import Selector
