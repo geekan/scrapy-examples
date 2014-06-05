@@ -17,7 +17,7 @@ from misc.log import *
 
 
 class DoubanBookSpider(CrawlSpider):
-    name = "douban_book"
+    name = "doubanbook"
     allowed_domains = ["douban.com"]
     start_urls = [
         "http://book.douban.com/tag/"

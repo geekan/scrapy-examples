@@ -24,7 +24,7 @@ Dont use it to do anything illegal!
   * page_recorder
   * douban_tag_book
 * doubanbook
-  * douban_book
+  * doubanbook
 * hrtencent
   * hrtencent
 * sis

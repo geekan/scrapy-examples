@@ -6,7 +6,6 @@
 #     http://doc.scrapy.org/en/latest/topics/settings.html
 #
 
-# I'm not sure below lines are needed, but add it first.. XXX
 import sys
 import os
 from os.path import dirname

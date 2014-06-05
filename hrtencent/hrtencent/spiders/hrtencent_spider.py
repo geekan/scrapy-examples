@@ -13,7 +13,7 @@ from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor as sle
 
 
 from hrtencent.items import *
-from hrtencent.misc.log import *
+from misc.log import *
 
 
 class HrtencentSpider(CrawlSpider):

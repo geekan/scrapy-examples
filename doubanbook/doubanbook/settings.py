@@ -7,7 +7,10 @@
 #
 
 import sys
-sys.path.append('../../misc')
+import os
+from os.path import dirname
+path = dirname(dirname(os.path.abspath(os.path.dirname(__file__))))
+sys.path.append(path)
 
 BOT_NAME = 'doubanbook'
 
@@ -18,8 +21,8 @@ NEWSPIDER_MODULE = 'doubanbook.spiders'
 #USER_AGENT = 'doubanbook (+http://www.yourdomain.com)'
 
 DOWNLOADER_MIDDLEWARES = {
-    'doubanbook.misc.middleware.CustomHttpProxyMiddleware': 400,
-    'doubanbook.misc.middleware.CustomUserAgentMiddleware': 401,
+    'misc.middleware.CustomHttpProxyMiddleware': 400,
+    'misc.middleware.CustomUserAgentMiddleware': 401,
 }
 
 LOG_LEVEL = 'INFO'
