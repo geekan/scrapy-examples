@@ -38,7 +38,7 @@ Dont use it to do anything illegal!
 
     git clone https://github.com/geekan/scrapy-examples
     cd scrapy-examples/doubanbook
-    scrapy crawl douban_book
+    scrapy crawl doubanbook
 
 ####Depth
 
