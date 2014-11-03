@@ -1,6 +1,7 @@
 import re
 import json
 import sys
+from urlparse import urljoin
 
 
 from scrapy.selector import Selector
@@ -18,7 +19,7 @@ from misc.log import *
 
 class sisSpider(CrawlSpider):
     name = "sis"
-    ip = "38.103.161.147"
+    ip = "38.103.161.187"
     allowed_domains = [ip]
     ip_format = 'http://' + ip + '/forum/forum-%d-1.html'
     start_urls = [
@@ -36,8 +37,9 @@ class sisSpider(CrawlSpider):
         for site in sites:
             item = SisItem()
             item['title'] = site.css('.postmessage h2::text').extract()
-            item['imgs'] = site.css('.postmessage img::attr(src)').extract()
-            item['torrents'] = site.css('.t_attachlist a[href*=attachment]').extract()
+            imgs = site.css('.postmessage img::attr(src)').extract()
+            item['imgs'] = filter(lambda x: not x.endswith('.gif'), imgs)
+            item['torrents'] = [urljoin(response.url, x) for x in site.css('.t_attachlist a[href*=attachment]::attr(href)').extract()]
             # item['duty'] = site.css('.c .l2::text').extract()
             item['link'] = response.url
             items.append(item)
