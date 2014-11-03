@@ -8,6 +8,7 @@ from scrapy import signals
 
 import json
 import codecs
+from collections import OrderedDict
 
 
 class JsonWithEncodingPipeline(object):
@@ -16,7 +17,7 @@ class JsonWithEncodingPipeline(object):
         self.file = codecs.open('data_utf8.json', 'w', encoding='utf-8')
 
     def process_item(self, item, spider):
-        line = json.dumps(dict(item), ensure_ascii=False) + "\n"
+        line = json.dumps(OrderedDict(item), ensure_ascii=False, sort_keys=False) + "\n"
         self.file.write(line)
         return item
 

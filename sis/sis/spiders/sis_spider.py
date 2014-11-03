@@ -23,11 +23,11 @@ class sisSpider(CrawlSpider):
     allowed_domains = [ip]
     ip_format = 'http://' + ip + '/forum/forum-%d-1.html'
     start_urls = [
-        ip_format % d for d in [143, 230]
+        ip_format % d for d in [143, 230, 58]
     ]
     rules = [
         Rule(sle(allow=("/forum/thread-\d*-1-1\.html")), callback='parse_2'),
-        Rule(sle(allow=("/forum/forum-\d*-1\.html")), follow=True, callback='parse_1'),
+        Rule(sle(allow=("/forum/forum-(143|230|58)-[0-9]{,2}\.html")), follow=True, callback='parse_1'),
     ]
 
     def parse_2(self, response):
@@ -43,7 +43,7 @@ class sisSpider(CrawlSpider):
             # item['duty'] = site.css('.c .l2::text').extract()
             item['link'] = response.url
             items.append(item)
-            print repr(item).decode("unicode-escape") + '\n'
+            # print repr(item).decode("unicode-escape") + '\n'
         # info('parsed ' + str(response))
         self.parse_1(response)
         return items
