@@ -23,7 +23,7 @@ class sisSpider(CrawlSpider):
     allowed_domains = [ip]
     ip_format = 'http://' + ip + '/forum/forum-%d-1.html'
     start_urls = [
-        ip_format % d for d in [143, 230, 58]
+        ip_format % d for d in [58] #[143, 230, 58]
     ]
     rules = [
         Rule(sle(allow=("/forum/thread-\d*-1-1\.html")), callback='parse_2'),
