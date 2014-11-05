@@ -1,3 +1,5 @@
+# coding: utf-8
+
 import re
 import json
 import sys
@@ -26,8 +28,9 @@ class sisSpider(CrawlSpider):
         ip_format % d for d in [58] #[143, 230, 58]
     ]
     rules = [
-        Rule(sle(allow=("/forum/thread-\d*-1-1\.html")), callback='parse_2'),
-        Rule(sle(allow=("/forum/forum-(143|230|58)-[0-9]{,2}\.html")), follow=True, callback='parse_1'),
+        # Rule(sle(allow=("/forum/thread-\d*-1-1\.html")), callback='parse_2'),
+        # Rule(sle(allow=("/forum/forum-(143|230|58)-[0-9]{,2}\.html")), follow=True, callback='parse_1'),
+        Rule(sle(allow=("/forum/forum-58-1\.html")), follow=True, callback='parse_1'),
     ]
 
     def parse_2(self, response):
@@ -51,6 +54,15 @@ class sisSpider(CrawlSpider):
     def parse_1(self, response):
         # url cannot encode to Chinese easily.. XXX
         info('parsed ' + str(response))
+        sel = Selector(response)
+        threads = sel.css('span[id*=thread_]')
+        for thread in threads:
+            # filter some thread
+            url = urljoin(response.url, thread.css('a[href]::attr(href)').extract()[0])
+            print thread.extract()
+            if re.search("LHB", thread.extract().encode('gbk')):
+                print "match!"
+            # yield Request(url, callback=parse_2)
 
     def _process_request(self, request):
         info('process ' + str(request))
