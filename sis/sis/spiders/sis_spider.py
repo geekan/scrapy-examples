@@ -30,7 +30,7 @@ class sisSpider(CrawlSpider):
     rules = [
         # Rule(sle(allow=("/forum/thread-\d*-1-1\.html")), callback='parse_2'),
         # Rule(sle(allow=("/forum/forum-(143|230|58)-[0-9]{,2}\.html")), follow=True, callback='parse_1'),
-        Rule(sle(allow=("/forum/forum-58-[0-9]{,2}\.html")), follow=True, callback='parse_1'),
+        Rule(sle(allow=("/forum/forum-58-[0-9]{,4}\.html")), follow=True, callback='parse_1'),
     ]
 
     def parse_2(self, response):
@@ -63,18 +63,19 @@ class sisSpider(CrawlSpider):
             inner_thread = thread.css('span[id*=thread_]')
             url = urljoin(response.url, inner_thread.css('a[href]::attr(href)').extract()[0])
             thread_content = re.sub(r"\s\s+", " ", thread.extract())
-            if re.search(u"(奸|姦)", thread_content):
-                item['title'] = inner_thread.css('a::text').extract()[0]
-                item['link'] = url
-                item['star'] = re.sub(r'\s+', '', thread.css('td[class=author] cite::text').extract()[1])
-                item['comment'] = thread.css('td[class=nums] strong::text').extract()[0]
-                item['view'] = thread.css('td[class=nums] em::text').extract()[0]
-                print ' ', item['star'], item['title'], item['link'], item['comment'], item['view']
+            # if re.search(u"(奸|姦)", thread_content):
+            item['title'] = inner_thread.css('a::text').extract()[0]
+            item['link'] = url
+            item['star'] = re.sub(r'\s+', '', thread.css('td[class=author] cite::text').extract()[1])
+            item['comment'] = thread.css('td[class=nums] strong::text').extract()[0]
+            item['view'] = thread.css('td[class=nums] em::text').extract()[0]
+            item['post_time'] = thread.css('td[class=author] em::text').extract()[0]
+            print ' ', item['post_time'], item['star'], '|', item['title'], item['link'], item['comment'], item['view']
 
-                # NOTE: content is only for debug purpose
-                # item['content'] = thread_content
+            # NOTE: content is only for debug purpose
+            # item['content'] = thread_content
 
-                items.append(item)
+            items.append(item)
             # yield Request(url, callback=parse_2)
         return items
 
