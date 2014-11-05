@@ -7,12 +7,14 @@ Dont use it to do anything illegal!
 
 ####PREREQUISITE
 
-* Scrapy 0.22
+* Scrapy
   > Check https://github.com/scrapy/scrapy
 
 * Goagent
   > If you don't want to use proxy, just comment the proxy middleware in settings.  
   > Or if you want to custom it, you can hack `misc/proxy.py`
+  > Its serviceability is decreasing fast, we should switch to another distributed proxy.
+  > Or the crawler would be ban easily.
 
 ####Avaiable Spiders
 
