@@ -52,17 +52,22 @@ class sisSpider(CrawlSpider):
         return items
 
     def parse_1(self, response):
+        items = []
         # url cannot encode to Chinese easily.. XXX
         info('parsed ' + str(response))
         sel = Selector(response)
         threads = sel.css('span[id*=thread_]')
         for thread in threads:
+            item = SisForumListItem()
             # filter some thread
             url = urljoin(response.url, thread.css('a[href]::attr(href)').extract()[0])
             print thread.extract()
             if re.search("LHB", thread.extract().encode('gbk')):
                 print "match!"
             # yield Request(url, callback=parse_2)
+            item['content'] = thread.extract()
+            items.append(item)
+        return items
 
     def _process_request(self, request):
         info('process ' + str(request))

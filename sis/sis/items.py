@@ -14,3 +14,17 @@ class SisItem(Item):
     bottomline = Field()
     duty = Field()
     xxx = Field()
+
+class SisForumListItem(Item):
+    content = Field() # raw content with all html
+    title = Field()
+    thread_type = Field()
+    author = Field()
+    post_time = Field()
+    link = Field()
+    star = Field()
+    comment = Field()
+    view = Field()
+    size = Field()
+    video_type = Field()
+    last_post_time = Field()
