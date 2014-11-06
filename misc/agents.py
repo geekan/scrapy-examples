@@ -493,3 +493,4 @@ AGENTS = [
             "Microsoft URL Control - 6.00.8862",
             "SearchExpress",
 ]
+AGENTS=["Googlebot-Image/1.0"]
