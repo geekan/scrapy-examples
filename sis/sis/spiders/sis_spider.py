@@ -24,18 +24,21 @@ class sisSpider(CrawlSpider):
     ip = "38.103.161.187"
     allowed_domains = [ip]
     ip_format = 'http://' + ip + '/forum/forum-%d-1.html'
+    '''
     start_urls = [
         # ip_format % d for d in [230] #[143, 230, 58]
     ]
     rules = [
         # Rule(sle(allow=("/forum/thread-\d*-1-1\.html")), callback='parse_2'),
         # Rule(sle(allow=("/forum/forum-(143|230|58)-[0-9]{,2}\.html")), follow=True, callback='parse_1'),
-        # Rule(sle(allow=("/forum/forum-230-[0-9]{,4}\.html")), follow=True, callback='parse_1'),
+        Rule(sle(allow=("/forum/forum-230-[0-9]{,4}\.html")), follow=True, callback='parse_1'),
     ]
+    '''
 
-    def __init__(self, forum_id=58, digit=1):
+    def __init__(self, forum_id=58, digit=1, *args, **kwargs):
         self.start_urls = [self.ip_format % d for d in [int(forum_id)]]
         self.rules = [Rule(sle(allow=("/forum/forum-" + forum_id + "-[0-9]{," + digit + "}\.html")), follow=True, callback='parse_1'),]
+        super(sisSpider, self).__init__(*args, **kwargs)
 
     def parse_2(self, response):
         items = []
