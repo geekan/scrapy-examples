@@ -1,6 +1,7 @@
 cscope.out
 download_file/
 *.json
+.DS_Store
 
 
 # Byte-compiled / optimized / DLL files
