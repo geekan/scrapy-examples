@@ -33,9 +33,9 @@ class sisSpider(CrawlSpider):
         # Rule(sle(allow=("/forum/forum-230-[0-9]{,4}\.html")), follow=True, callback='parse_1'),
     ]
 
-    def __init__(self, forum_id=58):
+    def __init__(self, forum_id=58, digit=1):
         self.start_urls = [ip_format % d for d in [forum_id]]
-        self.rules = [Rule(sle(allow=("/forum/forum-" + forum_id + "-[0-9]{,4}\.html")), follow=True, callback='parse_1'),]
+        self.rules = [Rule(sle(allow=("/forum/forum-" + forum_id + "-[0-9]{," + digit + "}\.html")), follow=True, callback='parse_1'),]
 
     def parse_2(self, response):
         items = []
