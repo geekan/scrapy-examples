@@ -52,4 +52,4 @@ real data from depth2.
 - Depth2: Urls like `http://book.douban.com/subject/1770782/` from depth1
 
 ####Example image
-![douban book](https://raw2.github.com/geekan/cowry/master/image/doubanbook.jpg)
+![douban book](https://raw.githubusercontent.com/geekan/scrapy-examples/master/doubanbook/sample.jpg)
