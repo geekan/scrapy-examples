@@ -1,5 +1,6 @@
 usage:
 
-```
-sort -t"\"" -nk8 data_utf8.json
+```sh
+scrapy crawl sis -a forum_id=230
+sort -t"\"" -nk12 data_utf8.json
 ```
