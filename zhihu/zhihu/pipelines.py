@@ -38,7 +38,7 @@ class RedisPipeline(object):
             print 'no id item!!'
 
         ritem = eval(self.r.get(item['id']))
-        final_item = dict(item.items(), ritem.items())
+        final_item = dict(item.items() + ritem.items())
         self.r.set(item['id'], final_item)
 
     def spider_closed(self, spider):
