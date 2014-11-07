@@ -28,6 +28,7 @@ DOWNLOADER_MIDDLEWARES = {
 
 ITEM_PIPELINES = {
     'zhihu.pipelines.JsonWithEncodingPipeline': 300,
+    'zhihu.pipelines.RedisPipeline': 301,
 }
 
 LOG_LEVEL = 'INFO'
