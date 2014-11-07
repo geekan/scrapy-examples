@@ -1,5 +1,6 @@
 import re
 import json
+from urlparse import urlparse
 
 
 from scrapy.selector import Selector
@@ -56,6 +57,7 @@ class ZhihuSpider(CrawlSpider):
         profile_header_navbar = profile_header.css('.profile-navbar')[0]
 
         item = ZhihuPeopleItem()
+        item['id'] = urlparse(response.url).path.split('/')[-1]
         item['name'] = [i.extract() for i in profile_header_main.css('.title-section .name::text')]
         item['sign'] = [i.extract() for i in profile_header_main.css('.title-section .bio::text')]
         item['location'] = [i.extract() for i in profile_header_main.css('.location.item::text')]

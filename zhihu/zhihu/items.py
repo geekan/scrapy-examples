@@ -7,6 +7,7 @@ from scrapy.item import Item, Field
 
 class ZhihuPeopleItem(Item):
     # define the fields for your item here like:
+    id = Field()
     name = Field()
     sign = Field()
     location = Field()
