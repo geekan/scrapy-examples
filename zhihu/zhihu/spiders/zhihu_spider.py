@@ -31,21 +31,10 @@ class ZhihuSpider(CrawlSpider):
     ]
 
     def parse_followers(self, response):
-        pass
+        return parse_people(response)
 
     def parse_followees(self, response):
-        items = []
-        sel = Selector(response)
-        sites = sel.css('#wrapper')
-        for site in sites:
-            item = ZhihuPeopleItem()
-            item['title'] = site.css('h1 span::text').extract()
-            item['link'] = response.url
-            item['content_intro'] = site.css('#link-report .intro p::text').extract()
-            items.append(item)
-            print repr(item).decode("unicode-escape") + '\n'
-        # info('parsed ' + str(response))
-        return items
+        return parse_people(response)
 
     def parse_people(self, response):
         info('parsed ' + str(response))
@@ -58,14 +47,31 @@ class ZhihuSpider(CrawlSpider):
 
         item = ZhihuPeopleItem()
         item['id'] = urlparse(response.url).path.split('/')[-1]
-        item['name'] = [i.extract() for i in profile_header_main.css('.title-section .name::text')]
-        item['sign'] = [i.extract() for i in profile_header_main.css('.title-section .bio::text')]
-        item['location'] = [i.extract() for i in profile_header_main.css('.location.item::text')]
-        item['business'] = [i.extract() for i in profile_header_main.css('.business.item::text')]
-        item['employment'] = [i.extract() for i in profile_header_main.css('.employment.item::text')]
-        item['position'] = [i.extract() for i in profile_header_main.css('.position.item::text')]
-        item['education'] = [i.extract() for i in profile_header_main.css('.education.item::text')]
-        item['education_extra'] = [i.extract() for i in profile_header_main.css('.education-extra.item::attr(title)')]
+
+        zhihu_profile_header_main_dict = {
+            'name':'.title-section .name::text',
+            'sign':'.title-section .bio::text',
+            'location':'.location.item::text',
+            'business':'.business.item::text',
+            'employment':'.employment.item::text',
+            'position':'.position.item::text',
+            'education':'.education.item::text',
+            'education_extra':'.education-extra.item::text',
+        }
+        zhihu_profile_header_operation_dict = {
+            'star':'.zm-profile-header-user-agree strong::text',
+            'thanks':'.zm-profile-header-user-thanks strong::text',
+        }
+        zhihu_profile_header_navbar = {
+            'asks':'a::attr(href*=asks) .num::text',
+            'answers':'a::attr(href*=answers) .num::text',
+            'posts':'a::attr(href*=posts) .num::text',
+            'collections':'a::attr(href*=collections) .num::text',
+            'logs':'a::attr(href*=logs) .num::text',
+        }
+
+        for key in zhihu_profile_header_main_dict:
+            item[key] = [i.extract() for i in profile_header_main.css(zhihu_profile_header_main_dict[key])]
 
         items.append(item)
         # import pdb; pdb.set_trace()

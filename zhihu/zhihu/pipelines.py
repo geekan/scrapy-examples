@@ -37,8 +37,13 @@ class RedisPipeline(object):
         if not item['id']:
             print 'no id item!!'
 
-        ritem = eval(self.r.get(item['id']))
-        final_item = dict(item.items() + ritem.items())
+        str_recorded_item = self.r.get(item['id'])
+        final_item = None
+        if str_recorded_item is None:
+            final_item = item
+        else:
+            ritem = eval(self.r.get(item['id']))
+            final_item = dict(item.items() + ritem.items())
         self.r.set(item['id'], final_item)
 
     def spider_closed(self, spider):
