@@ -120,14 +120,17 @@ class ZhihuSpider(CrawlSpider):
         return vals
 
 
-    l = []
+    def traversal(self, root, leaves):
+        leaves.append(root.val)
+        self.dfs(root.left)
+        self.dfs(root.right)
+
     def dfs(self, root):
         if root is None:
             return []
-        self.l.append(root.val)
-        self.dfs(root.left)
-        self.dfs(root.right)
-        return self.l
+        leaves = []
+        self.traversal(root, leaves)
+        return leaves
 
     def parse_with_css_rules(self, response, css_rules):
         items = []
