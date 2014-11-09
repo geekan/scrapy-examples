@@ -22,8 +22,7 @@ XXX：理论上，可以把所有的css rules都用dict表示（有深度）：
 all_css_rules = {
     '.zm-profile-header': {
         '.zm-profile-header-main': {
-            # 这一层就要dump出数据了，以__use标签为准
-            ‘__use’:'dump',
+            '__use':'dump',
             'name':'.title-section .name::text',
             'sign':'.title-section .bio::text',
             'location':'.location.item::text',
@@ -32,10 +31,22 @@ all_css_rules = {
             'position':'.position.item::text',
             'education':'.education.item::text',
             'education_extra':'.education-extra.item::text',
+        }, '.zm-profile-header-operation': {
+            '__use':'dump',
+            'agree':'.zm-profile-header-user-agree strong::text',
+            'thanks':'.zm-profile-header-user-thanks strong::text',
+        }, '.profile-navbar': {
+            '__use':'dump',
+            'asks':'a[href*=asks] .num::text',
+            'answers':'a[href*=answers] .num::text',
+            'posts':'a[href*=posts] .num::text',
+            'collections':'a[href*=collections] .num::text',
+            'logs':'a[href*=logs] .num::text',
         },
-        '.zm-profile-header-operation': {
-
-        },
+    }, '.zm-profile-side-following': {
+        '__use':'dump',
+        'followees':'a.item[href*=followees] strong::text',
+        'followers':'a.item[href*=followers] strong::text',
     }
 }
 
@@ -63,6 +74,38 @@ class ZhihuSpider(CrawlSpider):
         Rule(sle(allow=("/people/[^/]+/followers$", )), callback='parse_followers'),
         Rule(sle(allow=("/people/[^/]+$", )), callback='parse_people', follow=True),
     ]
+
+    all_css_rules = {
+        '.zm-profile-header': {
+            '.zm-profile-header-main': {
+                '__use':'dump',
+                'name':'.title-section .name::text',
+                'sign':'.title-section .bio::text',
+                'location':'.location.item::text',
+                'business':'.business.item::text',
+                'employment':'.employment.item::text',
+                'position':'.position.item::text',
+                'education':'.education.item::text',
+                'education_extra':'.education-extra.item::text',
+            }, '.zm-profile-header-operation': {
+                '__use':'dump',
+                'agree':'.zm-profile-header-user-agree strong::text',
+                'thanks':'.zm-profile-header-user-thanks strong::text',
+            }, '.profile-navbar': {
+                '__use':'dump',
+                'asks':'a[href*=asks] .num::text',
+                'answers':'a[href*=answers] .num::text',
+                'posts':'a[href*=posts] .num::text',
+                'collections':'a[href*=collections] .num::text',
+                'logs':'a[href*=logs] .num::text',
+            },
+        }, '.zm-profile-side-following': {
+            '__use':'dump',
+            'followees':'a.item[href*=followees] strong::text',
+            'followers':'a.item[href*=followers] strong::text',
+        }
+    }
+
 
     def parse_followers(self, response):
         return parse_people(response)
