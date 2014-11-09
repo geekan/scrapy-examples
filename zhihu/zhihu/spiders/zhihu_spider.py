@@ -75,6 +75,7 @@ class ZhihuSpider(CrawlSpider):
         Rule(sle(allow=("/people/[^/]+$", )), callback='parse_people', follow=True),
     ]
 
+    # need dfs/bfs
     all_css_rules = {
         '.zm-profile-header': {
             '.zm-profile-header-main': {
@@ -106,6 +107,36 @@ class ZhihuSpider(CrawlSpider):
         }
     }
 
+    def bfs(self, root, func=None):
+        cur = [root]
+        vals = []
+        while cur:
+            next = []
+            vals.append([x.val for x in cur])
+            for i in cur:
+                if i.left: next.append(i.left)
+                if i.right: next.append(i.right)
+            cur = next
+        return vals
+
+
+    l = []
+    def dfs(self, root):
+        if root is None:
+            return []
+        self.l.append(root.val)
+        self.dfs(root.left)
+        self.dfs(root.right)
+        return self.l
+
+    def parse_with_css_rules(self, response, css_rules):
+        items = []
+        sel = Selector(response)
+
+        for k, v in css_rules.items():
+            if 
+
+        return items
 
     def parse_followers(self, response):
         return parse_people(response)
