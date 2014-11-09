@@ -38,6 +38,10 @@ all_css_rules = {
         },
     }
 }
+
+1. 默认取sel.css()[0]，如否则需要'__unique':false
+2. 默认字典均为css解析，如否则需要'__use':'dump'表明是用于dump数据
+
 '''
 
 class ZhihuCrawlerContext(object):
