@@ -59,19 +59,25 @@ class ZhihuSpider(CrawlSpider):
             'education_extra':'.education-extra.item::text',
         }
         zhihu_profile_header_operation_dict = {
-            'star':'.zm-profile-header-user-agree strong::text',
+            'agree':'.zm-profile-header-user-agree strong::text',
             'thanks':'.zm-profile-header-user-thanks strong::text',
         }
         zhihu_profile_header_navbar = {
-            'asks':'a::attr(href*=asks) .num::text',
-            'answers':'a::attr(href*=answers) .num::text',
-            'posts':'a::attr(href*=posts) .num::text',
-            'collections':'a::attr(href*=collections) .num::text',
-            'logs':'a::attr(href*=logs) .num::text',
+            'asks':'a[href*=asks] .num::text',
+            'answers':'a[href*=answers] .num::text',
+            'posts':'a[href*=posts] .num::text',
+            'collections':'a[href*=collections] .num::text',
+            'logs':'a[href*=logs] .num::text',
         }
 
-        for key in zhihu_profile_header_main_dict:
-            item[key] = [i.extract() for i in profile_header_main.css(zhihu_profile_header_main_dict[key])]
+        for key, value in zhihu_profile_header_main_dict.items():
+            item[key] = [i.extract() for i in profile_header_main.css(value)]
+
+        for key, value in zhihu_profile_header_operation_dict.items():
+            item[key] = [i.extract() for i in profile_header_operation.css(value)]
+
+        for key, value in zhihu_profile_header_navbar.items():
+            item[key] = [i.extract() for i in profile_header_navbar.css(value)]
 
         items.append(item)
         # import pdb; pdb.set_trace()
