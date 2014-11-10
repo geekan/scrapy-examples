@@ -1,6 +1,7 @@
 cscope.out
 download_file/
-*.json
+data_utf8.json
+# *.json
 .DS_Store
 dump.rdb
 
