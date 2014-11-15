@@ -3,7 +3,7 @@ scrapy-examples
 
 Multifarious scrapy examples with integrated proxies and agents, which make you comfy to write a spider.
 
-Dont use it to do anything illegal!
+Don't use it to do anything illegal!
 
 ####PREREQUISITE
 
@@ -38,7 +38,9 @@ real data from depth2.
 ####Example image
 ![douban book](https://raw.githubusercontent.com/geekan/scrapy-examples/master/doubanbook/sample.jpg)
 
-####Avaiable Spiders
+***
+
+##Avaiable Spiders
 
 * linkedin
   * linkedin
