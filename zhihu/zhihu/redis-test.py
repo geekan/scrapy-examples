@@ -14,12 +14,21 @@ def dump_all(redis=r):
         val = redis.get(key)
         try:
             pairs[key] = eval(val)
-        except:
-            pass
+        except Exception as e:
+            print pairs, key, val, e
     return pairs
 
+def del_all(redis=r):
+    keys = redis.keys('*')
+    for k in keys:
+        print 'Deleting:', k, 'result is', redis.delete(k)
+
 def main():
-    print json.dumps(dump_all(), indent=4)
+    # del_all()
+    # print json.dumps(dump_all(), indent=4)
+    keys = r.keys('*')
+    print keys
+    print len(keys)
 
 if __name__ == '__main__':
     main()
