@@ -16,22 +16,6 @@ Dont use it to do anything illegal!
   > Its serviceability is decreasing fast, we should switch to another distributed proxy.  
   > Or the crawler would be ban easily.
 
-####Avaiable Spiders
-
-* linkedin
-  * linkedin
-* tutorial
-  * dmoz_item
-  * douban_book
-  * page_recorder
-  * douban_tag_book
-* doubanbook
-  * doubanbook
-* hrtencent
-  * hrtencent
-* sis
-  * sis
-
 ***
 
 ##doubanbook spider
@@ -53,3 +37,24 @@ real data from depth2.
 
 ####Example image
 ![douban book](https://raw.githubusercontent.com/geekan/scrapy-examples/master/doubanbook/sample.jpg)
+
+####Avaiable Spiders
+
+* linkedin
+  * linkedin
+* tutorial
+  * dmoz_item
+  * douban_book
+  * page_recorder
+  * douban_tag_book
+* doubanbook
+  * doubanbook
+* hrtencent
+  * hrtencent
+* sis
+  * sis
+* zhihu
+  * zhihu
+* alexa
+  * alexa
+  * alexa.cn
