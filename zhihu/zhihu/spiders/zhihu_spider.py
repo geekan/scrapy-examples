@@ -74,7 +74,7 @@ class ZhihuSpider(CrawlSpider):
     rules = [
         Rule(sle(allow=("/people/[^/]+/followees$")), callback='parse_followees'),
         Rule(sle(allow=("/people/[^/]+/followers$", )), callback='parse_followers'),
-        Rule(sle(allow=("/people/[^/]+$", )), callback='parse_people', follow=True),
+        Rule(sle(allow=("/people/[^/]+$", )), callback='parse_people_with_rules', follow=True),
     ]
 
     # need dfs/bfs
@@ -123,7 +123,7 @@ class ZhihuSpider(CrawlSpider):
 
 
     def traversal(self, sel, rules, item):
-        print 'traversal:', sel, rules.keys()
+        # print 'traversal:', sel, rules.keys()
         if '__use' in rules:
             for nk, nv in rules.items():
                 if nk == '__use':
@@ -131,7 +131,7 @@ class ZhihuSpider(CrawlSpider):
                 if sel.css(nv):
                     item[nk] = sel.css(nv)[0].extract()
                 else:
-                    item[nk] = ''
+                    item[nk] = []
         else:
             for nk, nv in rules.items():
                 self.traversal(sel.css(nk)[0], nv, item)
@@ -146,6 +146,12 @@ class ZhihuSpider(CrawlSpider):
     def parse_with_rules(self, response, rules):
         return self.dfs(Selector(response), rules)
 
+    def parse_people_with_rules(self, response):
+        item = self.parse_with_rules(response, self.all_css_rules)
+        item['id'] = urlparse(response.url).path.split('/')[-1]
+        info('Parsed '+response.url) # +' to '+str(item))
+        return item
+
     def parse_followers(self, response):
         return parse_people(response)
 
@@ -153,7 +159,7 @@ class ZhihuSpider(CrawlSpider):
         return parse_people(response)
 
     def parse_people(self, response):
-        info('parsed ' + str(response))
+        print 'parsed ' + str(response)
         items = []
         sel = Selector(response)
 
@@ -208,7 +214,7 @@ class ZhihuSpider(CrawlSpider):
             item[key] = [i.extract() for i in profile_side_following.css(value)]
 
         items.append(item)
-        import pdb; pdb.set_trace()
+        # import pdb; pdb.set_trace()
 
         return items
 
