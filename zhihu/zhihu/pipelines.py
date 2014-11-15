@@ -14,6 +14,9 @@ import codecs
 from collections import OrderedDict
 
 
+from misc.log import *
+
+
 class JsonWithEncodingPipeline(object):
 
     def __init__(self):
@@ -43,7 +46,13 @@ class RedisPipeline(object):
             final_item = item
         else:
             ritem = eval(self.r.get(item['id']))
-            final_item = dict(item.items() + ritem.items())
+            if ritem == item:
+                debug('item '+item['id']+' equal')
+            else:
+                # info('item '+item['id']+' merge\n'+str(item)+'\n'+str(ritem))
+                info('item '+item['id']+' use new item')
+            # final_item = dict(item.items() + ritem.items())
+            final_item = item
         self.r.set(item['id'], final_item)
 
     def spider_closed(self, spider):
