@@ -1,3 +1,5 @@
+#coding: utf-8
+
 import re
 import json
 from urlparse import urlparse
@@ -120,26 +122,29 @@ class ZhihuSpider(CrawlSpider):
         return vals
 
 
-    def traversal(self, root, leaves):
-        leaves.append(root.val)
-        self.dfs(root.left)
-        self.dfs(root.right)
+    def traversal(self, sel, rules, item):
+        print 'traversal:', sel, rules.keys()
+        if '__use' in rules:
+            for nk, nv in rules.items():
+                if nk == '__use':
+                    continue
+                if sel.css(nv):
+                    item[nk] = sel.css(nv)[0].extract()
+                else:
+                    item[nk] = ''
+        else:
+            for nk, nv in rules.items():
+                self.traversal(sel.css(nk)[0], nv, item)
 
-    def dfs(self, root):
-        if root is None:
+    def dfs(self, sel, rules):
+        if sel is None:
             return []
-        leaves = []
-        self.traversal(root, leaves)
-        return leaves
+        item = ZhihuPeopleItem()
+        self.traversal(sel, rules, item)
+        return item
 
-    def parse_with_css_rules(self, response, css_rules):
-        items = []
-        sel = Selector(response)
-
-        for k, v in css_rules.items():
-            if 
-
-        return items
+    def parse_with_rules(self, response, rules):
+        return self.dfs(Selector(response), rules)
 
     def parse_followers(self, response):
         return parse_people(response)
@@ -203,7 +208,7 @@ class ZhihuSpider(CrawlSpider):
             item[key] = [i.extract() for i in profile_side_following.css(value)]
 
         items.append(item)
-        # import pdb; pdb.set_trace()
+        import pdb; pdb.set_trace()
 
         return items
 
