@@ -21,35 +21,35 @@ from misc.spider import CommonSpider
 
 class dmozSpider(CommonSpider):
     name = "dmoz"
-    allowed_domains = ["dmoz.com"]
+    allowed_domains = ["dmoz.org"]
     start_urls = [
-        "http://www.dmoz.com/",
+        "http://www.dmoz.org/",
     ]
-    rules = [
-        Rule(sle(allow=("/[^/]*/?$")), callback='parse_1', follow=True),
-        Rule(sle(allow=("/")), callback='parse_2', follow=True),
-    ]
-    valid_catogories = [
+    valid_categories = [
         'Arts', 'Business', 'Computers', 'Games', 'Health', 'Home',
         'Kids_and_Teens', 'News', 'Recreation', 'Reference', 'Regional', 'Science',
         'Shopping', 'Society', 'Sports',
     ]
+    allow_rules = ['/'+i+'/' for i in valid_categories]
+    rules = [
+        Rule(sle(allow=allow_rules), callback='parse_1', follow=True),
+        #Rule(sle(allow=self.allow_rules), callback='parse_2', follow=True),
+    ]
 
-    depth_1_rules = {}
-    depth_2_rules = {
+    item_rules = {
         '.directory-url li': {
             '__use': 'dump',
-            'url': 'a::attr(href)',
+            '__list': True,
+            'url': 'li > a::attr(href)',
             'name': 'a::text',
             'description': 'li::text',
         }
     }
-    depth_3_rules = {}
 
     def parse_1(self, response):
         info('Parse depth 1 '+response.url)
+        items = self.parse_with_rules(response, self.item_rules, dmozItem)
+        return items
 
     def parse_2(self, response):
-        if urlparse(response.url).path.split('/')[0] not in valid_categories:
-            return
         info('Parse depth 2 '+response.url)
