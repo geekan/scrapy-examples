@@ -56,7 +56,7 @@ real data from depth2.
 * sis
   * sis
 * zhihu
-  * zhihu
+  * zhihu (it needs redis)
 * alexa
   * alexa
   * alexa.cn
