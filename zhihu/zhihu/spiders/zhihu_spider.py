@@ -19,50 +19,9 @@ from zhihu.items import *
 from misc.log import *
 
 '''
-XXX：理论上，可以把所有的css rules都用dict表示（有深度）：
-
-all_css_rules = {
-    '.zm-profile-header': {
-        '.zm-profile-header-main': {
-            '__use':'dump',
-            'name':'.title-section .name::text',
-            'sign':'.title-section .bio::text',
-            'location':'.location.item::text',
-            'business':'.business.item::text',
-            'employment':'.employment.item::text',
-            'position':'.position.item::text',
-            'education':'.education.item::text',
-            'education_extra':'.education-extra.item::text',
-        }, '.zm-profile-header-operation': {
-            '__use':'dump',
-            'agree':'.zm-profile-header-user-agree strong::text',
-            'thanks':'.zm-profile-header-user-thanks strong::text',
-        }, '.profile-navbar': {
-            '__use':'dump',
-            'asks':'a[href*=asks] .num::text',
-            'answers':'a[href*=answers] .num::text',
-            'posts':'a[href*=posts] .num::text',
-            'collections':'a[href*=collections] .num::text',
-            'logs':'a[href*=logs] .num::text',
-        },
-    }, '.zm-profile-side-following': {
-        '__use':'dump',
-        'followees':'a.item[href*=followees] strong::text',
-        'followers':'a.item[href*=followers] strong::text',
-    }
-}
-
 1. 默认取sel.css()[0]，如否则需要'__unique':false
 2. 默认字典均为css解析，如否则需要'__use':'dump'表明是用于dump数据
-
 '''
-
-class ZhihuCrawlerContext(object):
-
-    def __init__(self, sel=None, css_rules=None):
-        self.sel = sel
-        self.css_rules = css_rules
-
 
 class ZhihuSpider(CrawlSpider):
     name = "zhihu"
