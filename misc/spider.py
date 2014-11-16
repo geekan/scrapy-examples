@@ -59,18 +59,28 @@ class CommonSpider(CrawlSpider):
     }
     '''
 
-    def traversal(self, sel, rules, item):
+    def extract_item(self, sel, rules, item):
+        for nk, nv in rules.items():
+            if nk in ('__use', '__unique'):
+                continue
+            if nk not in item:
+                item[nk] = []
+            if sel.css(nv):
+                item[nk] += [i.extract() for i in sel.css(nv)]
+            else:
+                item[nk] = []
+
+    def traversal(self, sel, rules, item_class, item, items):
         # print 'traversal:', sel, rules.keys()
+        if item is None:
+            item = item_class()
         if '__use' in rules:
-            for nk, nv in rules.items():
-                if nk == '__use':
-                    continue
-                if nk not in item:
-                    item[nk] = []
-                if sel.css(nv):
-                    item[nk] += [i.extract() for i in sel.css(nv)]
-                else:
-                    item[nk] = []
+            if '__unique' in rules:
+                unique_item = item_class()
+                self.extract_item(sel, rules, item)
+                items.append(unique_item)
+            else:
+                self.extract_item(sel, rules, item)
         else:
             for nk, nv in rules.items():
                 for i in sel.css(nk):
@@ -79,9 +89,9 @@ class CommonSpider(CrawlSpider):
     def dfs(self, sel, rules, item_class):
         if sel is None:
             return []
-        item = item_class()
-        self.traversal(sel, rules, item)
-        return item
+        items = []
+        self.traversal(sel, rules, item_class, None, items)
+        return items
 
     def parse_with_rules(self, response, rules, item_class):
         return self.dfs(Selector(response), rules, item_class)
