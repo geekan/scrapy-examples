@@ -19,7 +19,7 @@ from .log import *
 
 
 '''
-1. 默认取sel.css()[0]，如否则需要'__unique':false
+1. 默认取sel.css()[0]，如否则需要'__unique':False or __list:True
 2. 默认字典均为css解析，如否则需要'__use':'dump'表明是用于dump数据
 '''
 
@@ -59,14 +59,26 @@ class CommonSpider(CrawlSpider):
     }
     '''
 
+    # Extract content without any extra spaces.
+    # NOTE: If content only has spaces, then it would be ignored.
+    def good_content_extract(self, sels):
+        contents = []
+        for i in sels:
+            content = re.sub(r'\s+', ' ', i.extract())
+            if content != ' ':
+                contents.append(content)
+        return contents
+
     def extract_item(self, sel, rules, item):
         for nk, nv in rules.items():
-            if nk in ('__use', '__unique'):
+            if nk in ('__use', '__list'):
                 continue
             if nk not in item:
                 item[nk] = []
             if sel.css(nv):
-                item[nk] += [i.extract() for i in sel.css(nv)]
+                # item[nk] += [i.extract() for i in sel.css(nv)]
+                # Without any extra spaces:
+                item[nk] += self.good_content_extract(sel.css(nv))
             else:
                 item[nk] = []
 
@@ -75,16 +87,16 @@ class CommonSpider(CrawlSpider):
         if item is None:
             item = item_class()
         if '__use' in rules:
-            if '__unique' in rules:
+            if '__list' in rules:
                 unique_item = item_class()
-                self.extract_item(sel, rules, item)
+                self.extract_item(sel, rules, unique_item)
                 items.append(unique_item)
             else:
                 self.extract_item(sel, rules, item)
         else:
             for nk, nv in rules.items():
                 for i in sel.css(nk):
-                    self.traversal(i, nv, item)
+                    self.traversal(i, nv, item_class, item, items)
 
     def dfs(self, sel, rules, item_class):
         if sel is None:
