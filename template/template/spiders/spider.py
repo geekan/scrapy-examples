@@ -16,9 +16,10 @@ from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor as sle
 
 from template.items import *
 from misc.log import *
+from misc.spider import CommonSpider
 
 
-class templateSpider(CrawlSpider):
+class templateSpider(CommonSpider):
     name = "template"
     allowed_domains = ["template.com"]
     start_urls = [
