@@ -26,8 +26,30 @@ class dmozSpider(CommonSpider):
         "http://www.dmoz.com/",
     ]
     rules = [
-        Rule(sle(allow=("/topsites/category;?[0-9]*/Top/World/Chinese_Simplified_CN/.*$")), callback='parse', follow=True),
+        Rule(sle(allow=("/[^/]*/?$")), callback='parse_1', follow=True),
+        Rule(sle(allow=("/")), callback='parse_2', follow=True),
+    ]
+    valid_catogories = [
+        'Arts', 'Business', 'Computers', 'Games', 'Health', 'Home',
+        'Kids_and_Teens', 'News', 'Recreation', 'Reference', 'Regional', 'Science',
+        'Shopping', 'Society', 'Sports',
     ]
 
-    def parse(self, response):
-        info('Parse '+response.url)
+    depth_1_rules = {}
+    depth_2_rules = {
+        '.directory-url li': {
+            '__use': 'dump',
+            'url': 'a::attr(href)',
+            'name': 'a::text',
+            'description': 'li::text',
+        }
+    }
+    depth_3_rules = {}
+
+    def parse_1(self, response):
+        info('Parse depth 1 '+response.url)
+
+    def parse_2(self, response):
+        if urlparse(response.url).path.split('/')[0] not in valid_categories:
+            return
+        info('Parse depth 2 '+response.url)
