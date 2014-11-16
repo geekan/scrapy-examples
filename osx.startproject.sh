@@ -10,8 +10,10 @@ if [ "$1" == "" ]; then
     exit
 fi
 
-echo "starting project $1..."
+echo "Starting project $1."
+
 cp -r template $1
-find ./test -type f | xargs sed -i '' 's/template/test/' 
+find ./test -type f | xargs sed -i '' "s/template/$1/"
+mv $1/template $1/$1
 
-
+echo "Create $1 succeed!"
