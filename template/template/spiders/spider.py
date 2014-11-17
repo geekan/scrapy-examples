@@ -31,3 +31,4 @@ class templateSpider(CommonSpider):
 
     def parse(self, response):
         info('Parse '+response.url)
+        # self.parse_with_rules(response, self.css_rules, templateItem)
