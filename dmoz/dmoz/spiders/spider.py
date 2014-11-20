@@ -33,7 +33,6 @@ class dmozSpider(CommonSpider):
     allow_rules = ['/'+i+'/' for i in valid_categories]
     rules = [
         Rule(sle(allow=allow_rules), callback='parse_1', follow=True),
-        #Rule(sle(allow=self.allow_rules), callback='parse_2', follow=True),
     ]
 
     item_rules = {
@@ -50,6 +49,3 @@ class dmozSpider(CommonSpider):
         info('Parse depth 1 '+response.url)
         items = self.parse_with_rules(response, self.item_rules, dmozItem)
         return items
-
-    def parse_2(self, response):
-        info('Parse depth 2 '+response.url)
