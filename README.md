@@ -60,3 +60,8 @@ real data from depth2.
 * alexa
   * alexa
   * alexa.cn
+
+##Advanced
+
+Use parse_with_rules to write a spider quickly.  
+See dmoz spider for more details.
