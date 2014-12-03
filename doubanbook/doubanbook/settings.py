@@ -21,8 +21,13 @@ NEWSPIDER_MODULE = 'doubanbook.spiders'
 #USER_AGENT = 'doubanbook (+http://www.yourdomain.com)'
 
 DOWNLOADER_MIDDLEWARES = {
-    'misc.middleware.CustomHttpProxyMiddleware': 400,
+    #'misc.middleware.CustomHttpProxyMiddleware': 400,
     'misc.middleware.CustomUserAgentMiddleware': 401,
+}
+
+ITEM_PIPELINES = {
+    'template.pipelines.JsonWithEncodingPipeline': 300,
+    #'template.pipelines.RedisPipeline': 301,
 }
 
 LOG_LEVEL = 'INFO'
