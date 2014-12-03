@@ -26,7 +26,7 @@ DOWNLOADER_MIDDLEWARES = {
 }
 
 ITEM_PIPELINES = {
-    'template.pipelines.JsonWithEncodingPipeline': 300,
+    'doubanbook.pipelines.JsonWithEncodingPipeline': 300,
     #'template.pipelines.RedisPipeline': 301,
 }
 
