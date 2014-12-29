@@ -5,10 +5,12 @@ Multifarious scrapy examples with integrated proxies and agents, which make you 
 
 Don't use it to do anything illegal!
 
-####PREREQUISITE
+### Usage
 
-* Scrapy
-  > Check https://github.com/scrapy/scrapy
+* Run `./osx.startproject.sh <project name>` to start a new project.  
+  It will automatically generate most things, the only left things are:
+  * `PROJECT/PROJECT/items.py`
+  * `PROJECT/PROJECT/spider/spider.py`
 
 ***
 
@@ -57,10 +59,7 @@ real data from depth2.
 
 ##Advanced
 
-* Use ./osx.startproject.sh <ProjectName> to start a new project.  
-  It will automatically generate most things, the only left things are `PROJECT/PROJECT/items.py` and `PROJECT/PROJECT/spider/spider.py`
-
-* Use parse_with_rules to write a spider quickly.  
+* Use `parse_with_rules` to write a spider quickly.  
   See dmoz spider for more details.
 
 * Proxies
