@@ -10,12 +10,6 @@ Don't use it to do anything illegal!
 * Scrapy
   > Check https://github.com/scrapy/scrapy
 
-* Goagent
-  > If you don't want to use proxy, just comment the proxy middleware in settings.  
-  > Or if you want to custom it, you can hack `misc/proxy.py`.  
-  > Its serviceability is decreasing fast, we should switch to another distributed proxy.  
-  > Or the crawler would be ban easily.
-
 ***
 
 ##doubanbook spider
@@ -63,5 +57,12 @@ real data from depth2.
 
 ##Advanced
 
-Use parse_with_rules to write a spider quickly.  
-See dmoz spider for more details.
+* Use ./osx.startproject.sh <ProjectName> to start a new project.  
+  It will automatically generate most things, the only left things are `PROJECT/PROJECT/items.py` and `PROJECT/PROJECT/spider/spider.py`
+
+* Use parse_with_rules to write a spider quickly.  
+  See dmoz spider for more details.
+
+* Proxies
+  * If you don't want to use proxy, just comment the proxy middleware in settings.  
+  * If you want to custom it, hack `misc/proxy.py` by yourself.  
