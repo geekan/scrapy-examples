@@ -7,7 +7,7 @@ Don't use it to do anything illegal!
 
 ### Usage
 
-* Run `./startproject.sh <project name>` to start a new project.  
+* Run `./startproject.sh <PROJECT>` to start a new project.  
   It will automatically generate most things, the only left things are:
   * `PROJECT/PROJECT/items.py`
   * `PROJECT/PROJECT/spider/spider.py`
