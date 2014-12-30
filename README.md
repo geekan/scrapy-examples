@@ -12,6 +12,48 @@ Don't use it to do anything illegal!
   * `PROJECT/PROJECT/items.py`
   * `PROJECT/PROJECT/spider/spider.py`
 
+#### Example to hack `items.py` and `spider.py`
+
+Hacked `items.py` with additional fields `url` and `description`:  
+```
+from scrapy.item import Item, Field
+
+class exampleItem(Item):
+    url = Field()
+    name = Field()
+    description = Field()
+```
+
+Hacked `spider.py` with start rules and css rules:  
+```
+class exampleSpider(CommonSpider):
+    name = "dmoz"
+    allowed_domains = ["dmoz.org"]
+    start_urls = [
+        "http://www.dmoz.com/",
+    ]
+    # Crawler would start on start_urls, and follow the valid urls allowed by below rules.
+    rules = [
+        Rule(sle(allow=["/Arts/", "/Games/"]), callback='parse', follow=True),
+    ]
+
+    css_rules = {
+        '.directory-url li': {
+            '__use': 'dump', # dump data directly
+            '__list': True, # it's a list
+            'url': 'li > a::attr(href)',
+            'name': 'a::text',
+            'description': 'li::text',
+        }
+    }
+
+    def parse(self, response):
+        info('Parse '+response.url)
+        # parse_with_rules is implemented here:
+        #   https://github.com/geekan/scrapy-examples/blob/master/misc/spider.py
+        self.parse_with_rules(response, self.css_rules, exampleItem)
+```
+
 ***
 
 ##doubanbook spider
