@@ -38,7 +38,8 @@ class DoubanBookSpider(CrawlSpider):
             item['link'] = response.url
             item['content_intro'] = site.css('#link-report .intro p::text').extract()
             items.append(item)
-            print repr(item).decode("unicode-escape") + '\n'
+            # print repr(item).decode("unicode-escape") + '\n'
+            print item
         # info('parsed ' + str(response))
         return items
 
