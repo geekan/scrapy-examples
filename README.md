@@ -24,7 +24,7 @@ class exampleItem(Item):
     description = Field()
 ```
 
-Hacked `spider.py` with start rules and css rules:  
+Hacked `spider.py` with start rules and css rules (here only display the class exampleSpider):  
 ```
 class exampleSpider(CommonSpider):
     name = "dmoz"
