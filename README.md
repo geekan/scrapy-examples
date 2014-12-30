@@ -56,7 +56,7 @@ class exampleSpider(CommonSpider):
 
 ***
 
-##doubanbook spider
+##Real spider example: doubanbook
 
 ####Tutorial
 
