@@ -1,11 +1,11 @@
 #!/bin/sh
 set -e
 
-function usage {
+usage() {
     echo "\n  usage:\n      ./startproject.sh <project name>\n"
 }
 
-if [ "$1"X == ""X ]; then
+if [ -z "$1" ]; then
     usage
     exit
 fi
