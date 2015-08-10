@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:600px"></div>
+    <!-- ECharts单文件引入 -->
+    <script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts图表
+        var myChart = echarts.init(document.getElementById('main')); 
+        
+        function normalization(data) {
+            return
+        }
+
+        $.getJSON("http://127.0.0.1:8000/forum-58.json", function(data) {
+            x = data.slice(0, 256)
+            xAxis = x.map(function(o){return o.title;});
+            
+            stars = x.map(function(o){return parseInt(o.star);});
+            console.log(stars);
+            
+            // seriesData = stars.map(function(o, i) {
+            seriesData = stars.map(function(o, i) {
+                var starsWithNeighbours = stars.slice(i - 5 > 0 ? (i-5):0, i + 5);
+                // console.log(stars.slice(i - 20, i + 20));
+                var sum = starsWithNeighbours.reduce(function(a, b) { return a + b; });
+                var avg = sum / 10;
+                var result = o / avg;
+                console.log(i, result, o, avg);
+                return result.toFixed(2);
+            });
+
+            // seriesData = [];
+            // for (i in stars) {
+            //     var starsWithNeighbours = stars.slice(i - 5 > 0 ? (i-5):0, i + 5);
+            //     // console.log(stars.slice(i - 20, i + 20));
+            //     console.log(i);
+            //     var sum = starsWithNeighbours.reduce(function(a, b) { return a + b; });
+            //     var avg = sum / starsWithNeighbours.length;
+            //     seriesData.push(avg);
+            // }
+
+            var option = {
+                tooltip: {
+                    show: true,
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:['title-score']
+                },
+                toolbox: {
+                    show : true,
+                    feature : {
+                        mark : {show: true},
+                        dataView : {show: true, readOnly: false},
+                        magicType : {show: true, type: ['line', 'bar']},
+                        restore : {show: true},
+                        saveAsImage : {show: true}
+                    }
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : xAxis
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value',
+                        max : 2
+                    }
+                ],
+                dataZoom: {
+                    show: true,
+                    start : 70
+                },
+                series : [
+                    {
+                        "name":"分数",
+                        "type":"line",
+                        showAllSymbol: true,
+                        "data":seriesData,
+                        markPoint : {
+                            data : [
+                                {type : 'max', name: '最大值'},
+                                {type : 'min', name: '最小值'}
+                            ]
+                        },
+                        markLine : {
+                            data : [
+                                {type : 'average', name: '平均值'}
+                            ]
+                        }
+                    }
+                ]
+            };
+
+            // 为echarts对象加载数据 
+            myChart.setOption(option); 
+
+        })
+    </script>
+</body>
