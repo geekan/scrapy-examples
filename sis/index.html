@@ -29,7 +29,7 @@
 
                 $.getJSON("http://127.0.0.1:8000/forum-58.json", function(data) {
                     x = data.slice(0, 256)
-                    xAxis = x.map(function(o){return o.post_time;});
+                    xAxis = x.map(function(o){return o.title;}); // post_time
                     
                     stars = x.map(function(o){return parseInt(o.star);});
                     console.log(stars);
@@ -122,6 +122,7 @@
                         }
                         else {
                             //document.getElementById('console').innerHTML = mes;
+                            window.open(x[param.dataIndex].link);
                         }
                         console.log(param);
                     }
