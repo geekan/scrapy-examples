@@ -39,7 +39,7 @@
                         var starsWithNeighbours = stars.slice(i - 5 > 0 ? (i-5):0, i + 5);
                         // console.log(stars.slice(i - 20, i + 20));
                         var sum = starsWithNeighbours.reduce(function(a, b) { return a + b; });
-                        var avg = sum / 10;
+                        var avg = sum / starsWithNeighbours.length;
                         var result = o / avg;
                         console.log(i, result, o, avg);
                         return result.toFixed(2);
@@ -81,8 +81,8 @@
                         ],
                         yAxis : [
                             {
-                                type : 'value',
-                                max : 2
+                                type : 'log',
+                                //max : 4
                             }
                         ],
                         dataZoom: {
