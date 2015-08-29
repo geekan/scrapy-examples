@@ -107,3 +107,7 @@ real data from depth2.
 * Proxies
   * If you don't want to use proxy, just comment the proxy middleware in settings.  
   * If you want to custom it, hack `misc/proxy.py` by yourself.  
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/geekan/scrapy-examples/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
