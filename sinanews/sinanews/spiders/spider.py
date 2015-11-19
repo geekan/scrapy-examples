@@ -26,8 +26,8 @@ class sinanewsSpider(CommonSpider):
         "http://news.sina.com.cn/",
     ]
     rules = [
-        #Rule(sle(allow=("/.*doc.*")), callback='parse', follow=True, process_request='process_request'),
-        Rule(sle(allow=('/c/2015-11-19/doc-ifxkszhk0386278.shtml')), callback='parse_1', follow=True, process_request='process_request'),
+        Rule(sle(allow=("/.*doc.*")), callback='parse_1', follow=True, process_request='process_request'),
+        #Rule(sle(allow=('/c/2015-11-19/doc-ifxkszhk0386278.shtml')), callback='parse_1', follow=True, process_request='process_request'),
     ]
 
     def process_request(self, r):

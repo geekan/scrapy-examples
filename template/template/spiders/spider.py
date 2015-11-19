@@ -26,9 +26,9 @@ class templateSpider(CommonSpider):
         "http://www.template.com/",
     ]
     rules = [
-        Rule(sle(allow=("/topsites/category;?[0-9]*/Top/World/Chinese_Simplified_CN/.*$")), callback='parse', follow=True),
+        Rule(sle(allow=("/topsites/category;?[0-9]*/Top/World/Chinese_Simplified_CN/.*$")), callback='parse_1', follow=True),
     ]
 
-    def parse(self, response):
+    def parse_1(self, response):
         info('Parse '+response.url)
         # self.parse_with_rules(response, self.css_rules, templateItem)
