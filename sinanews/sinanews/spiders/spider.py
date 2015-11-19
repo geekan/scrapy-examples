@@ -26,16 +26,17 @@ class sinanewsSpider(CommonSpider):
         "http://news.sina.com.cn/",
     ]
     rules = [
-        Rule(sle(allow=("/.*doc.*")), callback='parse_1', follow=True, process_request='process_request'),
+        Rule(sle(allow=("http://news.sina.com.cn/$")), callback='parse_0'),
+        #Rule(sle(allow=("/.*doc.*")), callback='parse_1', follow=True, process_request='process_request'),
         #Rule(sle(allow=('/c/2015-11-19/doc-ifxkszhk0386278.shtml')), callback='parse_1', follow=True, process_request='process_request'),
     ]
 
     list_css_rules = {
-        '#listZone': {
+        '#blk_yw_01 a': {
             '__use': 'dump',
             '__list': True,
-            'url': 'em a::attr(href)',
-            'name': '.Q-tpWrap p',
+            'url': 'a::attr(href)',
+            'name': 'a::text',
         }
     }
 
@@ -43,6 +44,10 @@ class sinanewsSpider(CommonSpider):
         info('process ' + str(r))
         return r
     
+    def parse_0(self, response):
+        info('Parse 0 '+response.url)
+        return self.parse_with_rules(response, self.list_css_rules, sinanewsItem)
+
     def parse_1(self, response):
         info('Parse xxx '+response.url)
         # self.parse_with_rules(response, self.css_rules, sinanewsItem)
