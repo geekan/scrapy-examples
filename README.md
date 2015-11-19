@@ -108,6 +108,8 @@ real data from depth2.
   * If you don't want to use proxy, just comment the proxy middleware in settings.  
   * If you want to custom it, hack `misc/proxy.py` by yourself.  
 
+* Notice
+  * Don't use `parse` as your method name, it's an inner method of CrawlSpider.
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/geekan/scrapy-examples/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
