@@ -21,14 +21,19 @@ from misc.spider import CommonSpider
 
 class sinanewsSpider(CommonSpider):
     name = "sinanews"
-    allowed_domains = ["sinanews.com"]
+    allowed_domains = ["news.sina.com.cn"]
     start_urls = [
-        "http://www.sinanews.com/",
+        "http://news.sina.com.cn/",
     ]
     rules = [
-        Rule(sle(allow=("/topsites/category;?[0-9]*/Top/World/Chinese_Simplified_CN/.*$")), callback='parse', follow=True),
+        #Rule(sle(allow=("/.*doc.*")), callback='parse', follow=True, process_request='process_request'),
+        Rule(sle(allow=('/c/2015-11-19/doc-ifxkszhk0386278.shtml')), callback='parse_1', follow=True, process_request='process_request'),
     ]
 
-    def parse(self, response):
-        info('Parse '+response.url)
+    def process_request(self, r):
+        info('process ' + str(r))
+        return r
+    
+    def parse_1(self, response):
+        info('Parse xxx '+response.url)
         # self.parse_with_rules(response, self.css_rules, sinanewsItem)
