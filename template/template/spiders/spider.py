@@ -31,4 +31,4 @@ class templateSpider(CommonSpider):
 
     def parse_1(self, response):
         info('Parse '+response.url)
-        # self.parse_with_rules(response, self.css_rules, templateItem)
+        # return self.parse_with_rules(response, self.css_rules, templateItem)
