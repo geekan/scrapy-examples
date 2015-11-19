@@ -30,6 +30,15 @@ class sinanewsSpider(CommonSpider):
         #Rule(sle(allow=('/c/2015-11-19/doc-ifxkszhk0386278.shtml')), callback='parse_1', follow=True, process_request='process_request'),
     ]
 
+    list_css_rules = {
+        '#listZone': {
+            '__use': 'dump',
+            '__list': True,
+            'url': 'em a::attr(href)',
+            'name': '.Q-tpWrap p',
+        }
+    }
+
     def process_request(self, r):
         info('process ' + str(r))
         return r

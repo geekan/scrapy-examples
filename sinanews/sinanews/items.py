@@ -8,4 +8,6 @@ from scrapy.item import Item, Field
 class sinanewsItem(Item):
     # define the fields for your item here like:
     name = Field()
+    content = Field()
+
 

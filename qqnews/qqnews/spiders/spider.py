@@ -24,8 +24,21 @@ class qqnewsSpider(CommonSpider):
         'http://news.qq.com/society_index.shtml'
     ]
     rules = [
-        Rule(sle(allow=(".*htm.*")), callback='parse_1', follow=True),
+        Rule(sle(allow=('society_index.shtml')), callback='parse_0', follow=True),
+        #Rule(sle(allow=(".*htm.*")), callback='parse_1', follow=True),
     ]
+    list_css_rules = { 
+        '.linkto': {
+            '__use': 'dump',
+            '__list': True,
+            'url': 'a::attr(href)',
+            'name': 'a::text',
+        }   
+    }
+
+    def parse_0(self, response):
+        info('Parse0 '+response.url)
+        return self.parse_with_rules(response, self.list_css_rules, qqnewsItem)
 
     def parse_1(self, response):
         info('Parse1 '+response.url)
