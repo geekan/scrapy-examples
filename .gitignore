@@ -1,4 +1,5 @@
 
+*.swp
 .ipynb_checkpoints/
 
 cscope.out
