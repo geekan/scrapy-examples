@@ -50,6 +50,10 @@ class sinanewsSpider(CommonSpider):
 
     content_css_rules = {
         'text': 'p::text',
+        'images': 'img::attr(src)',
+        'images-desc': '.img_descr::text',
+        # need url analysis for video
+        #'video': '#J_Article_Player',
     }
 
     def process_request(self, r):
