@@ -43,11 +43,13 @@ class sinanewsSpider(CommonSpider):
 
     list_css_rules = {
         '#blk_yw_01 a': {
-            '__use': 'dump',
-            '__list': True,
             'url': 'a::attr(href)',
             'name': 'a::text',
         }
+    }
+
+    content_css_rules = {
+        'text': 'p::text',
     }
 
     def process_request(self, r):
@@ -59,8 +61,10 @@ class sinanewsSpider(CommonSpider):
         x = self.parse_with_rules(response, self.list_css_rules, dict)
         pp.pprint(x)
         #pdb.set_trace()
-        return self.parse_with_rules(response, self.list_css_rules, sinanewsItem)
+        #return self.parse_with_rules(response, self.list_css_rules, sinanewsItem)
 
     def parse_1(self, response):
         info('Parse 1 '+response.url)
-        # self.parse_with_rules(response, self.css_rules, sinanewsItem)
+        x = self.parse_with_rules(response, self.content_css_rules, dict)
+        pp.pprint(x)
+        #self.parse_with_rules(response, self.css_rules, sinanewsItem)
