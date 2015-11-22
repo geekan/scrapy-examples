@@ -25,7 +25,7 @@ class qqnewsSpider(CommonSpider):
     ]
     rules = [
         Rule(sle(allow=('society_index.shtml')), callback='parse_0', follow=True),
-        Rule(sle(allow=(".*htm$")), callback='parse_1', follow=True),
+        Rule(sle(allow=(".*[0-9]{8}.*htm$")), callback='parse_1', follow=True),
     ]
 
     list_css_rules = { 
@@ -43,7 +43,7 @@ class qqnewsSpider(CommonSpider):
     }
 
     content_css_rules = {
-        'text': '#Cnt-Main-Article-QQ p::text',
+        'text': '#Cnt-Main-Article-QQ p *::text',
         'images': '#Cnt-Main-Article-QQ img::attr(src)',
         'images-desc': '#Cnt-Main-Article-QQ div p+ p::text',
     }
@@ -58,6 +58,7 @@ class qqnewsSpider(CommonSpider):
         info('Parse1 '+response.url)
         x = self.parse_with_rules(response, self.content_css_rules, dict)
         pp.pprint(x)
+        #import pdb; pdb.set_trace()
 
     def parse_2(self, response):
         info('Parse2 '+response.url)
