@@ -29,8 +29,6 @@ class qqnewsSpider(CommonSpider):
     ]
     list_css_rules = { 
         '.linkto': {
-            '__use': 'dump',
-            '__list': True,
             'url': 'a::attr(href)',
             'name': 'a::text',
         }   
