@@ -2,6 +2,7 @@ import re
 import json
 from urlparse import urlparse
 import urllib
+import pdb
 
 
 from scrapy.selector import Selector
@@ -19,6 +20,15 @@ from misc.log import *
 from misc.spider import CommonSpider
 
 
+import pprint
+class MyPrettyPrinter(pprint.PrettyPrinter):
+    def format(self, object, context, maxlevels, level):
+        if isinstance(object, unicode):
+            return (object.encode('utf8'), True, False)
+        return pprint.PrettyPrinter.format(self, object, context, maxlevels, level)
+pp = MyPrettyPrinter()
+
+
 class templateSpider(CommonSpider):
     name = "template"
     allowed_domains = ["template.com"]
@@ -31,4 +41,6 @@ class templateSpider(CommonSpider):
 
     def parse_1(self, response):
         info('Parse '+response.url)
+        # x = self.parse_with_rules(response, self.content_css_rules, dict)
+        # pp.pprint(x)
         # return self.parse_with_rules(response, self.css_rules, templateItem)
