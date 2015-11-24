@@ -22,7 +22,7 @@ NEWSPIDER_MODULE = 'googlescholar.spiders'
 #USER_AGENT = 'googlescholar (+http://www.yourdomain.com)'
 
 DOWNLOADER_MIDDLEWARES = {
-   # 'misc.middleware.CustomHttpProxyMiddleware': 400,
+    'misc.middleware.CustomHttpProxyMiddleware': 400,
     'misc.middleware.CustomUserAgentMiddleware': 401,
 }
 
