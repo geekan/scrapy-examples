@@ -37,10 +37,14 @@ class googlescholarSpider(CommonSpider):
         '.gs_r': {
             'title': '.gs_rt a *::text',
             'url': '.gs_rt a::attr(href)',
-            'pdf-text': '.gs_ggs a *::text',
-            'pdf-url': '.gs_ggs a::attr(href)',
+            'related-text': '.gs_ggsS::text',
+            'related-type': '.gs_ggsS .gs_ctg2::text',
+            'related-url': '.gs_ggs a::attr(href)',
             'citation-text': '.gs_fl > a:nth-child(1)::text',
             'citation-url': '.gs_fl > a:nth-child(1)::attr(href)',
+            'authors': '.gs_a a::text',
+            'description': '.gs_rs *::text',
+            'journal-year-src': '.gs_a::text',
         }
     }
 

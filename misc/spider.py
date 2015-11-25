@@ -26,6 +26,7 @@ from .log import *
 
 class CommonSpider(CrawlSpider):
 
+    auto_join_text = True
     ''' # css rule example:
     all_css_rules = {
         '.zm-profile-header': {
@@ -114,7 +115,10 @@ class CommonSpider(CrawlSpider):
                 if k in self.keywords:
                     continue
                 #import pdb;pdb.set_trace()
-                item[k] = self.extract_item(sel.css(v))
+                if v.endswith('::text') and self.auto_join_text:
+                    item[k] = ' '.join(self.extract_item(sel.css(v)))
+                else:
+                    item[k] = self.extract_item(sel.css(v))
             else:
                 item[k] = []
                 for i in sel.css(k):
