@@ -24,16 +24,23 @@ class googlescholarSpider(CommonSpider):
     name = "googlescholar"
     allowed_domains = ["google.com"]
     start_urls = [
-        #"http://scholar.google.com/scholar?as_ylo=2011&q=machine+learning&hl=en&as_sdt=0,5",
+        "http://scholar.google.com/scholar?as_ylo=2011&q=machine+learning&hl=en&as_sdt=0,5",
         #"http://scholar.google.com/scholar?q=estimate+ctr&btnG=&hl=en&as_sdt=0%2C5&as_ylo=2011",
-        "http://scholar.google.com",
+        #"http://scholar.google.com",
     ]
     rules = [
-        Rule(sle(allow=(".*")), callback='parse_1', follow=False),
+        Rule(sle(allow=("scholar\?.*")), callback='parse_1', follow=False),
     ]
+
+    list_css_rules = {
+        '.gs_ri': {
+            'title': '.gs_rt a::text',
+            'url': '.gs_rt a::attr(href)',
+        }
+    }
 
     def parse_1(self, response):
         info('Parse '+response.url)
-        # x = self.parse_with_rules(response, self.content_css_rules, dict)
+        x = self.parse_with_rules(response, self.list_css_rules, dict)
         # pp.pprint(x)
         # return self.parse_with_rules(response, self.css_rules, googlescholarItem)
