@@ -31,6 +31,6 @@ ITEM_PIPELINES = {
     #'googlescholar.pipelines.RedisPipeline': 301,
 }
 
-LOG_LEVEL = 'INFO'
+LOG_LEVEL = 'DEBUG'
 
 DOWNLOAD_DELAY = 1
