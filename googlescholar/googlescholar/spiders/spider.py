@@ -32,8 +32,9 @@ class googlescholarSpider(CommonSpider):
         Rule(sle(allow=("scholar\?.*")), callback='parse_1', follow=False),
     ]
 
+    #.gs_ri: content besides related html/pdf
     list_css_rules = {
-        '.gs_ri': {
+        '.gs_r': {
             'title': '.gs_rt a *::text',
             'url': '.gs_rt a::attr(href)',
             'pdf-text': '.gs_ggs a *::text',
@@ -45,6 +46,8 @@ class googlescholarSpider(CommonSpider):
 
     def parse_1(self, response):
         info('Parse '+response.url)
+        #sel = Selector(response)
+        #v = sel.css('.gs_ggs a::attr(href)').extract()
         #import pdb; pdb.set_trace()
         x = self.parse_with_rules(response, self.list_css_rules, dict)
         pp.pprint(x)
