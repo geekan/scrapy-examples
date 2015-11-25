@@ -36,8 +36,8 @@ class googlescholarSpider(CommonSpider):
         '.gs_ri': {
             'title': '.gs_rt a *::text',
             'url': '.gs_rt a::attr(href)',
-            'pdf-text': '.gs_md_wp a *::text',
-            'pdf-url': '.gs_md_wp a::attr(href)',
+            'pdf-text': '.gs_ggs a *::text',
+            'pdf-url': '.gs_ggs a::attr(href)',
             'citation-text': '.gs_fl > a:nth-child(1)::text',
             'citation-url': '.gs_fl > a:nth-child(1)::attr(href)',
         }
@@ -45,7 +45,7 @@ class googlescholarSpider(CommonSpider):
 
     def parse_1(self, response):
         info('Parse '+response.url)
-        import pdb; pdb.set_trace()
+        #import pdb; pdb.set_trace()
         x = self.parse_with_rules(response, self.list_css_rules, dict)
         pp.pprint(x)
         # return self.parse_with_rules(response, self.css_rules, googlescholarItem)
