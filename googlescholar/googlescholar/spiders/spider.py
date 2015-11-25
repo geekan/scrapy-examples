@@ -32,6 +32,11 @@ class googlescholarSpider(CommonSpider):
         Rule(sle(allow=("scholar\?.*")), callback='parse_1', follow=False),
     ]
 
+    def __init__(self, start_url, *args, **kwargs):
+        if start_url:
+            self.start_urls = [start_url]
+        super(sisSpider, self).__init__(*args, **kwargs)
+
     #.gs_ri: content besides related html/pdf
     list_css_rules = {
         '.gs_r': {
