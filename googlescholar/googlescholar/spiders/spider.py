@@ -35,7 +35,7 @@ class googlescholarSpider(CommonSpider):
     def __init__(self, start_url, *args, **kwargs):
         if start_url:
             self.start_urls = [start_url]
-        super(sisSpider, self).__init__(*args, **kwargs)
+        super(googlescholarSpider, self).__init__(*args, **kwargs)
 
     #.gs_ri: content besides related html/pdf
     list_css_rules = {
