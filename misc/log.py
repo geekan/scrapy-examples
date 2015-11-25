@@ -18,4 +18,6 @@ class MyPrettyPrinter(pprint.PrettyPrinter):
         if isinstance(object, unicode):
             return (object.encode('utf8'), True, False)
         return pprint.PrettyPrinter.format(self, object, context, maxlevels, level)
-pp = MyPrettyPrinter()
+pu = MyPrettyPrinter()
+
+pp = pprint.PrettyPrinter()
