@@ -59,5 +59,5 @@ class googlescholarSpider(CommonSpider):
         #v = sel.css('.gs_ggs a::attr(href)').extract()
         #import pdb; pdb.set_trace()
         x = self.parse_with_rules(response, self.list_css_rules, dict)
-        pp.pprint(x)
+        pp.pprint(x[0]['.gs_r'])
         # return self.parse_with_rules(response, self.css_rules, googlescholarItem)
