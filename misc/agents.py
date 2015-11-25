@@ -1,4 +1,4 @@
-AGENTS = [
+AGENTS_ALL = [
             "Avant Browser/1.2.789rel1 (http://www.avantbrowser.com)",
             "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/532.5 (KHTML, like Gecko) Chrome/4.0.249.0 Safari/532.5",
             "Mozilla/5.0 (Windows; U; Windows NT 5.2; en-US) AppleWebKit/532.9 (KHTML, like Gecko) Chrome/5.0.310.0 Safari/532.9",
@@ -493,5 +493,6 @@ AGENTS = [
             "Microsoft URL Control - 6.00.8862",
             "SearchExpress",
 ]
-AGENTS=["Googlebot-Image/1.0"]
-AGENTS=["Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)"]
+AGENT_GOOGLE_IMAGE=["Googlebot-Image/1.0"]
+#AGENTS=["Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)"]
+AGENTS=["Mozilla/5.0 (X11; Linux x86_64; rv:27.0) Gecko/20100101 Firefox/27.0"]

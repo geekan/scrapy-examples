@@ -24,8 +24,8 @@ class googlescholarSpider(CommonSpider):
     name = "googlescholar"
     allowed_domains = ["google.com"]
     start_urls = [
-        "https://scholar.google.com/scholar?as_ylo=2011&q=machine+learning&hl=en&as_sdt=0,5",
-        "https://scholar.google.com/scholar?q=estimate+ctr&btnG=&hl=en&as_sdt=0%2C5&as_ylo=2011"
+        "http://scholar.google.com/scholar?as_ylo=2011&q=machine+learning&hl=en&as_sdt=0,5",
+        "http://scholar.google.com/scholar?q=estimate+ctr&btnG=&hl=en&as_sdt=0%2C5&as_ylo=2011"
     ]
     rules = [
         Rule(sle(allow=(".*")), callback='parse_1', follow=False),
