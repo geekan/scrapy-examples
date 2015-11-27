@@ -22,13 +22,15 @@ from misc.spider import CommonSpider
 
 class arxivSpider(CommonSpider):
     name = "arxiv"
-    allowed_domains = ["arxiv.com"]
+    allowed_domains = ["arxiv.org"]
     start_urls = [
-        "http://www.arxiv.com/",
+        'http://arxiv.org/corr/home',
     ]
     rules = [
-        Rule(sle(allow=("/topsites/category;?[0-9]*/Top/World/Chinese_Simplified_CN/.*$")), callback='parse_1', follow=True),
+        Rule(sle(allow=('http://arxiv\.org/list/cs.{3}/recent')), callback='parse_1', follow=True),
     ]
+
+    #'http://export.arxiv.org/api/query?search_query=all:Artificial%20Intelligence&start=0&max_results=10'
 
     def parse_1(self, response):
         info('Parse '+response.url)
