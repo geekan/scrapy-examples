@@ -17,7 +17,7 @@ ITEM_PIPELINES = {
 #USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
 
 DOWNLOADER_MIDDLEWARES = {
-    'tutorial.misc.middleware.CustomHttpProxyMiddleware': 400,
+    #'tutorial.misc.middleware.CustomHttpProxyMiddleware': 400,
     'tutorial.misc.middleware.CustomUserAgentMiddleware': 401,
 }
 
