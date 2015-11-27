@@ -32,7 +32,7 @@ class googlescholarSpider(CommonSpider):
         Rule(sle(allow=("scholar\?.*")), callback='parse_1', follow=False),
     ]
 
-    def __init__(self, start_url, *args, **kwargs):
+    def __init__(self, start_url='', *args, **kwargs):
         if start_url:
             self.start_urls = [start_url]
         super(googlescholarSpider, self).__init__(*args, **kwargs)
