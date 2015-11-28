@@ -23,6 +23,7 @@ NEWSPIDER_MODULE = 'sinanews.spiders'
 
 DOWNLOADER_MIDDLEWARES = {
    # 'misc.middleware.CustomHttpProxyMiddleware': 400,
+    'misc.middleware.CustomHttpProxyFromMysqlMiddleware': 400,
     'misc.middleware.CustomUserAgentMiddleware': 401,
 }
 

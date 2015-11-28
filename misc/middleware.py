@@ -1,20 +1,17 @@
 from scrapy import log
-from proxy import PROXIES
+from proxy import PROXIES, FREE_PROXIES
 from agents import AGENTS
 
 import random
 
 
 class CustomHttpProxyFromMysqlMiddleware(object):
-    proxies = []
-
-    def init(self):
-        self.proxies = FREE_PROXIES
+    proxies = FREE_PROXIES
 
     def process_request(self, request, spider):
         # TODO implement complex proxy providing algorithm
         if self.use_proxy(request):
-            p = random.choice(PROXIES)
+            p = random.choice(self.proxies)
             try:
                 request.meta['proxy'] = "http://%s" % p['ip_port']
                 print(request.meta['proxy'])
