@@ -118,7 +118,8 @@ class CommonSpider(CrawlSpider):
                 if v.endswith('::text') and self.auto_join_text:
                     item[k] = ' '.join(self.extract_item(sel.css(v)))
                 else:
-                    item[k] = self.extract_item(sel.css(v))
+                    _items = self.extract_item(sel.css(v))
+                    item[k] = _items[0] if len(_items) >= 1 else ''
             else:
                 item[k] = []
                 for i in sel.css(k):
