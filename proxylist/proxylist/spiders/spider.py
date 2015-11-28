@@ -27,7 +27,7 @@ class proxylistSpider(CommonSpider):
         "https://free-proxy-list.net/",
     ]
     rules = [
-        Rule(sle(allow=("/")), callback='parse_1', follow=True),
+        Rule(sle(allow=("/$")), callback='parse_1', follow=True),
     ]
 
     list_css_rules = {
@@ -39,14 +39,22 @@ class proxylistSpider(CommonSpider):
             'anonymity': 'td:nth-child(5)::text',
             'google': 'td:nth-child(6)::text',
             'https': 'td:nth-child(7)::text',
-            'last-checked': 'td:nth-child(8)::text',
+            'last_checked': 'td:nth-child(8)::text',
         }
     }
 
     def parse_1(self, response):
         info('Parse '+response.url)
-        sel = Selector(response)
-        #import pdb; pdb.set_trace()
-        x = self.parse_with_rules(response, self.list_css_rules, dict)
-        pp.pprint(x['tbody tr'])
+        items = []
+        #sel = Selector(response)
+        import pdb; pdb.set_trace()
+        x = self.parse_with_rules(response, self.list_css_rules, dict, True)
+        x = x[0]['tbody tr']
+        pp.pprint(x)
+        for i in x:
+            item = freeProxyListItem()
+            for k, v in i.items():
+                item[k] = v
+            items.append(item)
+        return items
         # return self.parse_with_rules(response, self.css_rules, proxylistItem)

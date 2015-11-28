@@ -119,7 +119,13 @@ class CommonSpider(CrawlSpider):
                     item[k] = ' '.join(self.extract_item(sel.css(v)))
                 else:
                     _items = self.extract_item(sel.css(v))
-                    item[k] = _items[0] if len(_items) >= 1 else ''
+                    if force_1_item:
+                        if len(_items) >= 1:
+                            item[k] = _items[0]
+                        else:
+                            item[k] = ''
+                    else:
+                        item[k] = _items
             else:
                 item[k] = []
                 for i in sel.css(k):

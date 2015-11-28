@@ -5,7 +5,7 @@
 
 from scrapy.item import Item, Field
 
-class proxylistItem(Item):
+class freeProxyListItem(Item):
     # define the fields for your item here like:
     ip = Field()
     port = Field()
@@ -14,5 +14,5 @@ class proxylistItem(Item):
     anonymity = Field()
     google = Field()
     https = Field()
-    last-checked = Field()
+    last_checked = Field()
 

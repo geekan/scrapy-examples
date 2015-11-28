@@ -39,13 +39,13 @@ class JsonWithEncodingPipeline(object):
 class MySQLStorePipeline(object):
     def __init__(self):
         # user, passwd, db
-        self.conn = MySQLdb.connect(user='proxylist', 'proxylist', 'proxylist', 'localhost', charset="utf8", use_unicode=True)
+        self.conn = MySQLdb.connect(user='proxylist', passwd='proxylist', db='proxylist', host='localhost', charset="utf8", use_unicode=True)
         self.cursor = self.conn.cursor()
         # self.cursor.execute('create table free_proxy_list (ip varchar(32), port int, code varchar(16), country varchar(64), anoymity varchar(32), google varchar(4), https varchar(4), last_checked varchar(32));''')
 
     def process_item(self, item, spider):
         try:
-            l = ['ip', 'port', 'code', 'country', 'anoymity', 'google', 'https', 'last_checked']
+            l = ['ip', 'port', 'code', 'country', 'anonymity', 'google', 'https', 'last_checked']
             self.cursor.execute("""
                 INSERT INTO free_proxy_list
                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",
