@@ -107,7 +107,7 @@ class CommonSpider(CrawlSpider):
             print(sth)
 
     keywords = set(['__use', '__list'])
-    def traversal_dict(self, sel, rules, item_class, item, items):
+    def traversal_dict(self, sel, rules, item_class, item, items, force_1_item):
         #import pdb; pdb.set_trace()
         item = {}
         for k, v in rules.items():
@@ -124,23 +124,23 @@ class CommonSpider(CrawlSpider):
                 item[k] = []
                 for i in sel.css(k):
                     #print(k, v)
-                    self.traversal_dict(i, v, item_class, item, item[k])
+                    self.traversal_dict(i, v, item_class, item, item[k], force_1_item)
         items.append(item)
 
-    def dfs(self, sel, rules, item_class):
+    def dfs(self, sel, rules, item_class, force_1_item):
         if sel is None:
             return []
 
         items = []
         if item_class != dict:
-            self.traversal(sel, rules, item_class, None, items)
+            self.traversal(sel, rules, item_class, None, items, force_1_item)
         else:
-            self.traversal_dict(sel, rules, item_class, None, items)
+            self.traversal_dict(sel, rules, item_class, None, items, force_1_item)
 
         return items
 
-    def parse_with_rules(self, response, rules, item_class):
-        return self.dfs(Selector(response), rules, item_class)
+    def parse_with_rules(self, response, rules, item_class, force_1_item=False):
+        return self.dfs(Selector(response), rules, item_class, force_1_item)
 
     ''' # use parse_with_rules example:
     def parse_people_with_rules(self, response):
