@@ -22,16 +22,31 @@ from misc.spider import CommonSpider
 
 class proxylistSpider(CommonSpider):
     name = "proxylist"
-    allowed_domains = ["proxylist.com"]
+    allowed_domains = ["free-proxy-list.net"]
     start_urls = [
-        "http://www.proxylist.com/",
+        "https://free-proxy-list.net/",
     ]
     rules = [
-        Rule(sle(allow=("/topsites/category;?[0-9]*/Top/World/Chinese_Simplified_CN/.*$")), callback='parse_1', follow=True),
+        Rule(sle(allow=("/")), callback='parse_1', follow=True),
     ]
+
+    list_css_rules = {
+        'tbody tr': {
+            'ip': 'td:nth-child(1)::text',
+            'port': 'td:nth-child(2)::text',
+            'code': 'td:nth-child(3)::text',
+            'country': 'td:nth-child(4)::text',
+            'anonymity': 'td:nth-child(5)::text',
+            'google': 'td:nth-child(6)::text',
+            'https': 'td:nth-child(7)::text',
+            'last-checked': 'td:nth-child(8)::text',
+        }
+    }
 
     def parse_1(self, response):
         info('Parse '+response.url)
-        # x = self.parse_with_rules(response, self.content_css_rules, dict)
-        # pp.pprint(x)
+        sel = Selector(response)
+        #import pdb; pdb.set_trace()
+        x = self.parse_with_rules(response, self.list_css_rules, dict)
+        pp.pprint(x)
         # return self.parse_with_rules(response, self.css_rules, proxylistItem)
