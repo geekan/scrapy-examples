@@ -29,6 +29,7 @@ DOWNLOADER_MIDDLEWARES = {
 ITEM_PIPELINES = {
     'proxylist.pipelines.JsonWithEncodingPipeline': 300,
     #'proxylist.pipelines.RedisPipeline': 301,
+    'proxylist.pipelines.MySQLStorePipeline': 302
 }
 
 LOG_LEVEL = 'INFO'
