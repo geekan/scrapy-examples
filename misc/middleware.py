@@ -9,8 +9,7 @@ class CustomHttpProxyFromMysqlMiddleware(object):
     proxies = []
 
     def init(self):
-        self.proxies = 
-
+        self.proxies = FREE_PROXIES
 
     def process_request(self, request, spider):
         # TODO implement complex proxy providing algorithm
