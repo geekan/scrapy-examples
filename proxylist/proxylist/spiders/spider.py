@@ -48,5 +48,5 @@ class proxylistSpider(CommonSpider):
         sel = Selector(response)
         #import pdb; pdb.set_trace()
         x = self.parse_with_rules(response, self.list_css_rules, dict)
-        pp.pprint(x)
+        pp.pprint(x['tbody tr'])
         # return self.parse_with_rules(response, self.css_rules, proxylistItem)
