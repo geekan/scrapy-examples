@@ -7,5 +7,12 @@ from scrapy.item import Item, Field
 
 class proxylistItem(Item):
     # define the fields for your item here like:
-    name = Field()
+    ip = Field()
+    port = Field()
+    code = Field()
+    country = Field()
+    anonymity = Field()
+    google = Field()
+    https = Field()
+    last-checked = Field()
 
