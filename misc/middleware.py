@@ -17,6 +17,7 @@ class CustomHttpProxyFromMysqlMiddleware(object):
             p = random.choice(PROXIES)
             try:
                 request.meta['proxy'] = "http://%s" % p['ip_port']
+                print(request.meta['proxy'])
             except Exception, e:
                 log.msg("Exception %s" % e, _level=log.CRITICAL)
 
