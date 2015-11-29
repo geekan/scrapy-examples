@@ -31,21 +31,16 @@ real data from depth2.
 
 ##Avaiable Spiders
 
-* linkedin
-  * linkedin
 * tutorial
   * dmoz_item
   * douban_book
   * page_recorder
   * douban_tag_book
 * doubanbook
-  * doubanbook
+* linkedin
 * hrtencent
-  * hrtencent
 * sis
-  * sis
 * zhihu
-  * zhihu (it needs redis)
 * alexa
   * alexa
   * alexa.cn
