@@ -57,3 +57,46 @@ class proxylistSpider(CommonSpider):
             items.append(item)
         return items
         # return self.parse_with_rules(response, self.css_rules, proxylistItem)
+
+
+class proxylistSpider(CommonSpider):
+    name = "hidemyass"
+    allowed_domains = ["hidemyass.com"]
+    start_urls = [
+        "http://proxylist.hidemyass.com",
+    ]
+    rules = [
+        Rule(sle(allow=("/[0-9](#.*)?$")), callback='parse_1', follow=True),
+    ]
+
+    # xpath:
+    # tree = tr.xpath("//*[not(contains(@style,'display:none'))]/text()")
+    # n[2].css('td:nth-child(2)').xpath(".//*[not(contains(@style,'display:none'))]/text()")
+    list_css_rules = {
+        'tbody tr': {
+            'ip': "td:nth-child(2) *[style*='inline-block']::text",
+            'port': 'td:nth-child(3)::text',
+            'code': 'td:nth-child(8)::text',
+            'country': 'td:nth-child(4)::text',
+            'speed': 'td:nth-child(5) *::attr(value)',
+            'connection_time': 'td:nth-child(6) *::attr(value)',
+            'type': 'td:nth-child(7)::text',
+            'last_checked': '.timestamp span::text',
+        }
+    }
+
+    def parse_1(self, response):
+        info('Parse '+response.url)
+        items = []
+        n = response.css('tbody tr')
+        import pdb; pdb.set_trace()
+        x = self.parse_with_rules(response, self.list_css_rules, dict, True)
+        x = x[0]['tbody tr']
+        pp.pprint(x)
+        #for i in x:
+        #    item = freeProxyListItem()
+        #    for k, v in i.items():
+        #        item[k] = v
+        #    items.append(item)
+        #return items
+        # return self.parse_with_rules(response, self.css_rules, proxylistItem)
