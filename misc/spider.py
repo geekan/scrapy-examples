@@ -106,6 +106,19 @@ class CommonSpider(CrawlSpider):
         if DEBUG == True:
             print(sth)
 
+    def deal_text(self, sel, item, force_1_item, k, v):
+        if v.endswith('::text') and self.auto_join_text:
+            item[k] = ' '.join(self.extract_item(sel.css(v)))
+        else:
+            _items = self.extract_item(sel.css(v))
+            if force_1_item:
+                if len(_items) >= 1:
+                    item[k] = _items[0]
+                else:
+                    item[k] = ''
+            else:
+                item[k] = _items
+
     keywords = set(['__use', '__list'])
     def traversal_dict(self, sel, rules, item_class, item, items, force_1_item):
         #import pdb; pdb.set_trace()
@@ -114,18 +127,10 @@ class CommonSpider(CrawlSpider):
             if type(v) != dict:
                 if k in self.keywords:
                     continue
+                if type(v) == list:
+                    continue
+                deal_text(sel, item, force_1_item, k, v)
                 #import pdb;pdb.set_trace()
-                if v.endswith('::text') and self.auto_join_text:
-                    item[k] = ' '.join(self.extract_item(sel.css(v)))
-                else:
-                    _items = self.extract_item(sel.css(v))
-                    if force_1_item:
-                        if len(_items) >= 1:
-                            item[k] = _items[0]
-                        else:
-                            item[k] = ''
-                    else:
-                        item[k] = _items
             else:
                 item[k] = []
                 for i in sel.css(k):
