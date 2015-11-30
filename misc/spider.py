@@ -129,7 +129,7 @@ class CommonSpider(CrawlSpider):
                     continue
                 if type(v) == list:
                     continue
-                deal_text(sel, item, force_1_item, k, v)
+                self.deal_text(sel, item, force_1_item, k, v)
                 #import pdb;pdb.set_trace()
             else:
                 item[k] = []
