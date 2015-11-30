@@ -59,7 +59,7 @@ class proxylistSpider(CommonSpider):
         # return self.parse_with_rules(response, self.css_rules, proxylistItem)
 
 
-class proxylistSpider(CommonSpider):
+class hidemyassSpider(CommonSpider):
     name = "hidemyass"
     allowed_domains = ["hidemyass.com"]
     start_urls = [
@@ -100,3 +100,122 @@ class proxylistSpider(CommonSpider):
         #    items.append(item)
         #return items
         # return self.parse_with_rules(response, self.css_rules, proxylistItem)
+
+
+# http://www.xroxy.com/proxylist.php?port=&type=All_http&ssl=ssl&country=&latency=1000&reliability=9000&sort=reliability&desc=true&pnum=0#table
+# http://www.xroxy.com/proxylist.php?port=&type=All_http&ssl=ssl&country=&latency=1000&reliability=9000&sort=reliability&desc=true&pnum=1#table
+# http://www.xroxy.com/proxylist.php?port=&type=All_http&ssl=ssl&country=&latency=1000&reliability=9000&sort=reliability&desc=true&pnum=2#table
+class xroxySpider(CommonSpider):
+    name = "xroxy"
+    allowed_domains = ["xroxy.com"]
+    start_urls = [
+        "http://xroxy.com/proxylist.php?port=&type=All_http&ssl=ssl&country=&latency=1000&reliability=9000&sort=reliability&desc=true&pnum=0#table",
+    ]
+    rules = [
+        Rule(sle(allow=("/proxylist.php\?port=&type=All_http&ssl=ssl&country=&latency=1000&reliability=9000&sort=reliability&desc=true&pnum=[0-9]+#table$")), callback='parse_1', follow=True),
+    ]
+
+    list_css_rules = {
+        'tbody tr': {
+            'ip': "td:nth-child(2) a::text", #, "xpath:.//*[not(contains(@style,'display:none'))]/text()"],
+            'port': 'td:nth-child(3) a::text',
+            'type': 'td:nth-child(4) a::text',
+            'country': 'td:nth-child(6) a::text',
+            'latency': 'td:nth-child(7)::text',
+            'reliability': 'td:nth-child(8)::text',
+            'detail': 'td:nth-child(9) a::attr(href)',
+        }
+    }
+
+    def parse_1(self, response):
+        info('Parse '+response.url)
+        items = []
+        n = response.css('tbody tr')
+        import pdb; pdb.set_trace()
+        x = self.parse_with_rules(response, self.list_css_rules, dict, True)
+        x = x[0]['tbody tr']
+        pp.pprint(x)
+        #for i in x:
+        #    item = freeProxyListItem()
+        #    for k, v in i.items():
+        #        item[k] = v
+        #    items.append(item)
+        #return items
+        # return self.parse_with_rules(response, self.css_rules, proxylistItem)
+
+
+class samairSpider(CommonSpider):
+    name = "samair"
+    allowed_domains = ["samair.ru"]
+    start_urls = [
+        'http://www.samair.ru/proxy/'
+    ]
+    rules = [
+        Rule(sle(allow=("proxy/$")), callback='parse_1', follow=True),
+    ]
+
+    list_css_rules = {
+        '#proxylist tr': {
+            'ip': "td:nth-child(1) *::text", #, "xpath:.//*[not(contains(@style,'display:none'))]/text()"],
+            #'port': 'td:nth-child(3) a::text',
+            'anonymity': 'td:nth-child(2) *::text',
+            'last_checked': 'td:nth-child(3) *::text',
+            'country': 'td:nth-child(4) a::text',
+        }
+    }
+
+    def parse_1(self, response):
+        info('Parse '+response.url)
+        items = []
+        n = response.css('tbody tr')
+        #import pdb; pdb.set_trace()
+        x = self.parse_with_rules(response, self.list_css_rules, dict, True)
+        x = x[0]['#proxylist tr']
+        pp.pprint(x)
+        #for i in x:
+        #    item = freeProxyListItem()
+        #    for k, v in i.items():
+        #        item[k] = v
+        #    items.append(item)
+        #return items
+        # return self.parse_with_rules(response, self.css_rules, proxylistItem)
+
+
+class samairSpider(CommonSpider):
+    name = "proxylistorg"
+    allowed_domains = ["proxy-list.org"]
+    start_urls = [
+        'https://proxy-list.org/english/index.php'
+    ]
+    rules = [
+        Rule(sle(allow=("english/index.php$")), callback='parse_1', follow=True),
+    ]
+
+    list_css_rules = {
+        '#proxy-table .table ul': {
+            'ip': "li:nth-child(1)::text", #, "xpath:.//*[not(contains(@style,'display:none'))]/text()"],
+            #'port': 'td:nth-child(3) a::text',
+            'anonymity': 'li:nth-child(4)::text',
+            'speed': 'li:nth-child(3)::text',
+            'ssl': 'li:nth-child(2)::text',
+            'country': 'li:nth-child(5) *::text',
+        }
+    }
+
+    def parse_1(self, response):
+        info('Parse '+response.url)
+        items = []
+        n = response.css('tbody tr')
+        #import pdb; pdb.set_trace()
+        x = self.parse_with_rules(response, self.list_css_rules, dict, True)
+        x = x[0]['#proxy-table .table ul']
+        pp.pprint(x)
+        #for i in x:
+        #    item = freeProxyListItem()
+        #    for k, v in i.items():
+        #        item[k] = v
+        #    items.append(item)
+        #return items
+        # return self.parse_with_rules(response, self.css_rules, proxylistItem)
+
+
