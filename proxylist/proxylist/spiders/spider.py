@@ -69,12 +69,12 @@ class proxylistSpider(CommonSpider):
         Rule(sle(allow=("/[0-9](#.*)?$")), callback='parse_1', follow=True),
     ]
 
-    # xpath:
-    # tree = tr.xpath("//*[not(contains(@style,'display:none'))]/text()")
+    # xpath: note that the paras are not rendered, so we cannot use it directly
+    # we should 1. render it or 2. write some logic to filter the real displayed node.
     # n[2].css('td:nth-child(2)').xpath(".//*[not(contains(@style,'display:none'))]/text()")
     list_css_rules = {
         'tbody tr': {
-            'ip': "td:nth-child(2) *[style*='inline-block']::text",
+            'ip': "td:nth-child(2)", #, "xpath:.//*[not(contains(@style,'display:none'))]/text()"],
             'port': 'td:nth-child(3)::text',
             'code': 'td:nth-child(8)::text',
             'country': 'td:nth-child(4)::text',
