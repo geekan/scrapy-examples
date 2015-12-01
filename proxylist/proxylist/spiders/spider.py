@@ -181,14 +181,14 @@ class samairSpider(CommonSpider):
         # return self.parse_with_rules(response, self.css_rules, proxylistItem)
 
 
-class samairSpider(CommonSpider):
+class proxylistorgSpider(CommonSpider):
     name = "proxylistorg"
     allowed_domains = ["proxy-list.org"]
     start_urls = [
         'https://proxy-list.org/english/index.php'
     ]
     rules = [
-        Rule(sle(allow=("english/index.php$")), callback='parse_1', follow=True),
+        Rule(sle(allow=("english/index.php(\?p=[0-9]+)?$")), callback='parse_1', follow=True),
     ]
 
     list_css_rules = {
