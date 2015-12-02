@@ -220,3 +220,45 @@ class proxylistorgSpider(CommonSpider):
         # return self.parse_with_rules(response, self.css_rules, proxylistItem)
 
 
+class proxy4freeSpider(CommonSpider):
+    name = "proxy4free"
+    allowed_domains = ["proxy4free.com"]
+    start_urls = [
+        'http://www.proxy4free.com/list/webproxy1.html'
+    ]
+    rules = [
+        Rule(sle(allow=("list/webproxy[0-9]+\.html")), callback='parse_1', follow=True),
+    ]
+
+    list_css_rules = {
+        'tbody tr': {
+            'domain': "td:nth-child(2) *::text", #, "xpath:.//*[not(contains(@style,'display:none'))]/text()"],
+            #'port': 'td:nth-child(3) a::text',
+            'country': 'td:nth-child(4) *::text',
+            'rating': 'td:nth-child(5) *::text',
+            'access_time': 'td:nth-child(6) *::text',
+            'uptime': 'td:nth-child(7) *::text',
+            'online_since': 'td:nth-child(8) *::text',
+            'last_checked': 'td:nth-child(9) *::text',
+            'features_hian': 'td:nth-child(10) *::text',
+            'features_ssl': 'td:nth-child(11) *::text',
+        }
+    }
+
+    def parse_1(self, response):
+        info('Parse '+response.url)
+        items = []
+        n = response.css('tbody tr')
+        #import pdb; pdb.set_trace()
+        x = self.parse_with_rules(response, self.list_css_rules, dict, True)
+        x = x[0]['tbody tr']
+        pp.pprint(x)
+        #for i in x:
+        #    item = freeProxyListItem()
+        #    for k, v in i.items():
+        #        item[k] = v
+        #    items.append(item)
+        #return items
+        # return self.parse_with_rules(response, self.css_rules, proxylistItem)
+
+
