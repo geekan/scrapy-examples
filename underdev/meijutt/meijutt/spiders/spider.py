@@ -24,18 +24,21 @@ class meijuttSpider(CommonSpider):
     name = "meijutt"
     allowed_domains = ["meijutt.com"]
     start_urls = [
-        "http://www.meijutt.com/content/meiju117.html",
+        "http://www.meijutt.com/content/meiju117.html", # 3
+        "http://www.meijutt.com/content/meiju116.html", # 4
     ]
     rules = [
-        Rule(sle(allow=(".*")), callback='parse_1', follow=False),
+        Rule(sle(allow=(".*meiju11[67]\.html$")), callback='parse_1', follow=False),
     ]
 
-    css_rule = {
-        'links': '#jishu input::attr(value)'
+    content_css_rules = {
+        '.downurl .adds': {
+            'links': 'input::attr(value)'
+        }
     }
 
     def parse_1(self, response):
         info('Parse '+response.url)
-        # x = self.parse_with_rules(response, self.content_css_rules, dict)
-        # pp.pprint(x)
+        x = self.parse_with_rules(response, self.content_css_rules, dict)
+        pp.pprint(x)
         # return self.parse_with_rules(response, self.css_rules, meijuttItem)
