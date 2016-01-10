@@ -24,11 +24,15 @@ class meijuttSpider(CommonSpider):
     name = "meijutt"
     allowed_domains = ["meijutt.com"]
     start_urls = [
-        "http://www.meijutt.com/",
+        "http://www.meijutt.com/content/meiju117.html",
     ]
     rules = [
-        Rule(sle(allow=("/topsites/category;?[0-9]*/Top/World/Chinese_Simplified_CN/.*$")), callback='parse_1', follow=True),
+        Rule(sle(allow=(".*")), callback='parse_1', follow=False),
     ]
+
+    css_rule = {
+        'links': '#jishu input::attr(value)'
+    }
 
     def parse_1(self, response):
         info('Parse '+response.url)
