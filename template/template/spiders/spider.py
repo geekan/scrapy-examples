@@ -30,6 +30,26 @@ class templateSpider(CommonSpider):
         Rule(sle(allow=("/topsites/category;?[0-9]*/Top/World/Chinese_Simplified_CN/.*$")), callback='parse_1', follow=True),
     ]
 
+    list_css_rules = { 
+        '.linkto': {
+            'url': 'a::attr(href)',
+            'name': 'a::text',
+        }   
+    }   
+
+    list_css_rules_2 = { 
+        '#listZone .Q-tpWrap': {
+            'url': '.linkto::attr(href)',
+            'name': '.linkto::text'
+        }   
+    }   
+
+    content_css_rules = { 
+        'text': '#Cnt-Main-Article-QQ p *::text',
+        'images': '#Cnt-Main-Article-QQ img::attr(src)',
+        'images-desc': '#Cnt-Main-Article-QQ div p+ p::text',
+    }
+
     def parse_1(self, response):
         info('Parse '+response.url)
         # x = self.parse_with_rules(response, self.content_css_rules, dict)
