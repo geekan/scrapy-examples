@@ -27,7 +27,7 @@ class doubanmovieSpider(CommonSpider):
         "http://movie.douban.com/chart",
     ]
     rules = [
-        Rule(sle(allow=(".*movie.douban.com/subject/25787888/$")), callback='parse_1', follow=True),
+        Rule(sle(allow=(".*movie.douban.com/subject/[0-9]+/$")), callback='parse_1', follow=True),
     ]
 
     list_css_rules = { 
@@ -54,5 +54,5 @@ class doubanmovieSpider(CommonSpider):
     def parse_1(self, response):
         info('Parse '+response.url)
         x = self.parse_with_rules(response, self.content_css_rules, dict)
-        pp.pprint(x)
+        print(repr(x).decode('raw_unicode_escape'))
         # return self.parse_with_rules(response, self.css_rules, doubanmovieItem)
