@@ -48,7 +48,7 @@ class doubanmovieSpider(CommonSpider):
         'rating_per': '.rating_per::text',
         'rating_num': '.rating_num::text',
         'title': 'h1 span:nth-child(1)::text',
-        'rating_people': '.rating_people::text',
+        'rating_people': '.rating_people span::text',
     }
 
     def parse_1(self, response):
