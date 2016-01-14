@@ -22,12 +22,12 @@ from misc.spider import CommonSpider
 
 class doubanmovieSpider(CommonSpider):
     name = "doubanmovie"
-    allowed_domains = ["doubanmovie.com"]
+    allowed_domains = ["douban.com"]
     start_urls = [
-        "http://www.doubanmovie.com/",
+        "http://movie.douban.com/chart",
     ]
     rules = [
-        Rule(sle(allow=("/topsites/category;?[0-9]*/Top/World/Chinese_Simplified_CN/.*$")), callback='parse_1', follow=True),
+        Rule(sle(allow=(".*movie.douban.com/subject/25787888/$")), callback='parse_1', follow=True),
     ]
 
     list_css_rules = { 
@@ -45,13 +45,14 @@ class doubanmovieSpider(CommonSpider):
     }   
 
     content_css_rules = { 
-        'text': '#Cnt-Main-Article-QQ p *::text',
-        'images': '#Cnt-Main-Article-QQ img::attr(src)',
-        'images-desc': '#Cnt-Main-Article-QQ div p+ p::text',
+        'rating_per': '.rating_per::text',
+        'rating_num': '.rating_num::text',
+        'title': 'h1 span:nth-child(1)::text',
+        'rating_people': '.rating_people::text',
     }
 
     def parse_1(self, response):
         info('Parse '+response.url)
-        # x = self.parse_with_rules(response, self.content_css_rules, dict)
-        # pp.pprint(x)
+        x = self.parse_with_rules(response, self.content_css_rules, dict)
+        pp.pprint(x)
         # return self.parse_with_rules(response, self.css_rules, doubanmovieItem)
