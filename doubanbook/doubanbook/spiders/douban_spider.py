@@ -23,8 +23,8 @@ class DoubanBookSpider(CrawlSpider):
         "http://book.douban.com/tag/"
     ]
     rules = [
-        Rule(sle(allow=("/subject/\d+/?$")), callback='parse_2'),
-        Rule(sle(allow=("/tag/[^/]+/?$", )), follow=True),
+        Rule(sle(allow=("/subject/\d+/\?from=tag$")), callback='parse_2'),
+        Rule(sle(allow=("/tag/[^/]+/\?focus=book$", )), follow=True),
         Rule(sle(allow=("/tag/$", )), follow=True),
     ]
 
