@@ -14,13 +14,13 @@ from urlparse import urljoin
 
 from scrapy.selector import Selector
 try:
-    from scrapy.spider import Spider
+    from scrapy.spiders import Spider
 except:
-    from scrapy.spider import BaseSpider as Spider
+    from scrapy.spiders import BaseSpider as Spider
 from scrapy.utils.response import get_base_url
 from scrapy import log
-from scrapy.contrib.spiders import CrawlSpider, Rule
-from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor as sle
+from scrapy.spiders import CrawlSpider, Rule
+from scrapy.linkextractors import LinkExtractor as sle
 
 
 from tutorial.items import TutorialItem

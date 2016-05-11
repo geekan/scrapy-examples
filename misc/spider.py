@@ -12,7 +12,7 @@ except:
     from scrapy.spiders import BaseSpider as Spider
 from scrapy.utils.response import get_base_url
 from scrapy.spiders import CrawlSpider, Rule
-from scrapy.linkextractors.sgml import SgmlLinkExtractor as sle
+from scrapy.linkextractors import LinkExtractor as sle
 
 
 from .log import *
@@ -102,8 +102,8 @@ class CommonSpider(CrawlSpider):
                     self.traversal(i, nv, item_class, item, items)
 
     DEBUG=True
-    def debug(sth):
-        if DEBUG == True:
+    def debug(self, sth):
+        if self.DEBUG == True:
             print(sth)
 
     def deal_text(self, sel, item, force_1_item, k, v):
@@ -144,7 +144,7 @@ class CommonSpider(CrawlSpider):
 
         items = []
         if item_class != dict:
-            self.traversal(sel, rules, item_class, None, items, force_1_item)
+            self.traversal(sel, rules, item_class, None, items)
         else:
             self.traversal_dict(sel, rules, item_class, None, items, force_1_item)
 

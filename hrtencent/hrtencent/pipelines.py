@@ -20,5 +20,5 @@ class JsonWithEncodingPipeline(object):
         self.file.write(line)
         return item
 
-    def spider_closed(self, spider):
+    def close_spider(self, spider):
         self.file.close()

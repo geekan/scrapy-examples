@@ -24,8 +24,12 @@ class JsonWithEncodingPipeline(object):
         self.file.write(line)
         return item
 
-    def spider_closed(self, spider):
+    def close_spider(self, spider):
+        print("JsonWithEncodingPipeline closed")
         self.file.close()
+
+    def open_spider(self, spider):
+        print("JsonWithEncodingPipeline opend")
 
 
 class RedisPipeline(object):
@@ -46,5 +50,5 @@ class RedisPipeline(object):
             final_item = dict(item.items() + ritem.items())
         self.r.set(item['id'], final_item)
 
-    def spider_closed(self, spider):
+    def close_spider(self, spider):
         return

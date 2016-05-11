@@ -23,7 +23,7 @@ class XmlExportPipeline(object):
     def from_crawler(cls, crawler):
         pipeline = cls()
         crawler.signals.connect(pipeline.spider_opened, signals.spider_opened)
-        crawler.signals.connect(pipeline.spider_closed, signals.spider_closed)
+        crawler.signals.connect(pipeline.close_spider, signals.close_spider)
         return pipeline
 
     def spider_opened(self, spider):
@@ -32,7 +32,7 @@ class XmlExportPipeline(object):
         self.exporter = XmlItemExporter(file)
         self.exporter.start_exporting()
 
-    def spider_closed(self, spider):
+    def close_spider(self, spider):
         self.exporter.finish_exporting()
         file = self.files.pop(spider)
         file.close()
@@ -55,5 +55,5 @@ class JsonWithEncodingPipeline(object):
         self.file.write(line)
         return item
 
-    def spider_closed(self, spider):
+    def close_spider(self, spider):
         self.file.close()

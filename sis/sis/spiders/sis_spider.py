@@ -8,12 +8,12 @@ from urlparse import urljoin
 
 from scrapy.selector import Selector
 try:
-    from scrapy.spider import Spider
+    from scrapy.spiders import Spider
 except:
-    from scrapy.spider import BaseSpider as Spider
+    from scrapy.spiders import BaseSpider as Spider
 from scrapy.utils.response import get_base_url
-from scrapy.contrib.spiders import CrawlSpider, Rule
-from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor as sle
+from scrapy.spiders import CrawlSpider, Rule
+from scrapy.linkextractors import LinkExtractor as sle
 
 from sis.items import *
 from misc.log import *
@@ -37,7 +37,7 @@ class sisSpider(CrawlSpider):
 
     def __init__(self, forum_id=58, digit=1, *args, **kwargs):
         self.start_urls = [self.ip_format % d for d in [int(forum_id)]]
-        self.rules = [Rule(sle(allow=("/forum/forum-" + forum_id + "-[0-9]{," + digit + "}\.html")), follow=True, callback='parse_1'),]
+        self.rules = [Rule(sle(allow=("/forum/forum-" + str(forum_id) + "-[0-9]{," + str(digit) + "}\.html")), follow=True, callback='parse_1'),]
         super(sisSpider, self).__init__(*args, **kwargs)
 
     def parse_2(self, response):
