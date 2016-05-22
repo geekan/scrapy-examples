@@ -1,6 +1,6 @@
 from scrapy.selector import HtmlXPathSelector
-from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
-from scrapy.contrib.spiders import CrawlSpider, Rule
+from scrapy.linkextractors.sgml import SgmlLinkExtractor
+from scrapy.spiders import CrawlSpider, Rule
 from scrapy.http import Request
 from scrapy import log
 from linkedin.items import LinkedinItem, PersonProfileItem
