@@ -39,21 +39,10 @@ class douyuSpider(CommonSpider):
         }   
     }   
 
-    list_css_rules_2 = { 
-        '#listZone .Q-tpWrap': {
-            'url': '.linkto::attr(href)',
-            'name': '.linkto::text'
-        }   
-    }   
-
-    content_css_rules = { 
-        'text': '#Cnt-Main-Article-QQ p *::text',
-        'images': '#Cnt-Main-Article-QQ img::attr(src)',
-        'images-desc': '#Cnt-Main-Article-QQ div p+ p::text',
-    }
 
     def parse_1(self, response):
         info('Parse '+response.url)
-        # x = self.parse_with_rules(response, self.content_css_rules, dict)
+        x = self.parse_with_rules(response, self.list_css_rules, dict)
+        print(json.dumps(x, ensure_ascii=False, indent=2))
         # pp.pprint(x)
         # return self.parse_with_rules(response, self.css_rules, douyuItem)
