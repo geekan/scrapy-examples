@@ -106,5 +106,3 @@ class exampleSpider(CommonSpider):
         self.parse_with_rules(response, self.css_rules, exampleItem)
 ```
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/geekan/scrapy-examples/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
