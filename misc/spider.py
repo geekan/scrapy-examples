@@ -26,7 +26,7 @@ from .log import *
 
 class CommonSpider(CrawlSpider):
 
-    auto_join_text = True
+    auto_join_text = False
     ''' # css rule example:
     all_css_rules = {
         '.zm-profile-header': {
