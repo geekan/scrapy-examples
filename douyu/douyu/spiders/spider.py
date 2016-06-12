@@ -24,16 +24,18 @@ class douyuSpider(CommonSpider):
     name = "douyu"
     allowed_domains = ["douyu.com"]
     start_urls = [
-        "http://www.douyu.com/",
+        "http://www.douyu.com/directory/all"
     ]
     rules = [
-        Rule(sle(allow=("/topsites/category;?[0-9]*/Top/World/Chinese_Simplified_CN/.*$")), callback='parse_1', follow=True),
+        Rule(sle(allow=("http://www.douyu.com/directory/all")), callback='parse_1', follow=True),
     ]
 
     list_css_rules = { 
-        '.linkto': {
+        '#live-list-contentbox li': {
             'url': 'a::attr(href)',
-            'name': 'a::text',
+            'room_name': 'a::attr(title)',
+            'tag': 'span.tag.ellipsis::text',
+            'people_count': '.dy-num.fr::text'
         }   
     }   
 
