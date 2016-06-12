@@ -1,3 +1,4 @@
+#!/bin/bash
 
 delay=${1:-1}
 
