@@ -1,0 +1,4 @@
+AJAX part. Need render engine.
+
+Data format may be JSON:
+ - https://api.twitch.tv/kraken/videos/top?limit=20&offset=0&period=week&broadcast_type=all&on_site=1
