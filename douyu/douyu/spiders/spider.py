@@ -36,13 +36,27 @@ class douyuSpider(CommonSpider):
             'room_name': 'a::attr(title)',
             'tag': 'span.tag.ellipsis::text',
             'people_count': '.dy-num.fr::text'
-        }   
-    }   
+        }
+    }
+
+    list_css_rules_for_item = {
+        '#live-list-contentbox li': {
+            '__use': '1',
+            '__list': '1',
+            'url': 'a::attr(href)',
+            'room_name': 'a::attr(title)',
+            'tag': 'span.tag.ellipsis::text',
+            'people_count': '.dy-num.fr::text'
+        }
+    }
 
 
     def parse_1(self, response):
         info('Parse '+response.url)
-        x = self.parse_with_rules(response, self.list_css_rules, dict)
-        print(json.dumps(x, ensure_ascii=False, indent=2))
+        #x = self.parse_with_rules(response, self.list_css_rules, dict)
+        x = self.parse_with_rules(response, self.list_css_rules_for_item, douyuItem)
+        print(len(x))
+        # print(json.dumps(x, ensure_ascii=False, indent=2))
         # pp.pprint(x)
-        # return self.parse_with_rules(response, self.css_rules, douyuItem)
+        # return self.parse_with_rules(response, self.list_css_rules, douyuItem)
+        return x

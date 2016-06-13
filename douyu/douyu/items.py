@@ -7,5 +7,7 @@ from scrapy.item import Item, Field
 
 class douyuItem(Item):
     # define the fields for your item here like:
-    name = Field()
-
+    url = Field()
+    room_name = Field()
+    people_count = Field()
+    tag = Field()
