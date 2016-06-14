@@ -47,3 +47,4 @@ class general_spiderSpider(CommonSpider):
         print(json.dumps(x, ensure_ascii=False, indent=2))
         # pp.pprint(x)
         # return self.parse_with_rules(response, self.css_rules, general_spiderItem)
+        return x
