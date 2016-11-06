@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import requests
+from json import loads
 from scrapy.http import Request
 from scrapy.selector import Selector
 
@@ -33,8 +34,6 @@ def clean_string(string):
 
 def address_to_geo(address):
     data = requests.get(BAIDU_GEO.format(address)).json()
-    if 'result' in data:
-        return {}
     longitude = data['result']['location']['lng'] if 'result' in data else 120.260569
     latitude = data['result']['location']['lat'] if 'result' in data else 30.242865
     return {'longitude': longitude, 'latitude': latitude}
@@ -46,11 +45,9 @@ class dianpingSpider(CommonSpider):
 
     def start_requests(self):
         for k, v in start_url_dict.items():
-            for i in range(1, 20):
+            for i in range(1, 3):
                 url = base_category_url + v + 'p{}'.format(i)
                 yield Request(url, callback=self.parse, meta={'category': k})
-                break
-            break
 
     def parse(self, response):
         hxs = Selector(response)
@@ -85,10 +82,15 @@ class dianpingSpider(CommonSpider):
 class dianpingDealSpider(CommonSpider):
     name = "dianping-deal"
     allowed_domains = ["dianping.com"]
-    start_urls = [
-        "http://t.dianping.com/deal/21481263",
 
-    ]
+    def start_requests(self):
+        with open('partner.json', 'rb') as f:
+            for line in f:
+                data = loads(line)
+                for url in data['deals']:
+                    yield Request(url, callback=self.parse, meta={'category': data['category'],
+                                                                  'partner': data['name']})
+                    break
 
     def parse(self, response):
         deal = {}
@@ -100,4 +102,9 @@ class dianpingDealSpider(CommonSpider):
         deal['description'] = clean_string(description)
         price = bd.css('.price-display::text').extract_first()
         deal['price'] = clean_string(price)
-        print deal
+        # it's dynamic
+        # images = hxs.xpath('//div[@class="img-area"]//img/@src').extract()
+        # deal['images'] = ','.join(images[:2])
+        deal['category'] = response.request.meta['category']
+        deal['partner'] = response.request.meta['partner']
+        return deal
