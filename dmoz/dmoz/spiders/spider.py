@@ -23,12 +23,10 @@ class dmozSpider(CommonSpider):
     name = "dmoz"
     allowed_domains = ["dmoz.org"]
     start_urls = [
-        "http://www.dmoz.org/",
+        "https://www.bloomberg.com/markets2/api/history/CAC%3AIND/PX_LAST?timeframe=5_YEAR&period=monthly&volumePeriod=monthly/",
     ]
     valid_categories = [
-        'Arts', 'Business', 'Computers', 'Games', 'Health', 'Home',
-        'Kids_and_Teens', 'News', 'Recreation', 'Reference', 'Regional', 'Science',
-        'Shopping', 'Society', 'Sports',
+        'dateTime', 'value',
     ]
     allow_rules = ['/'+i+'/' for i in valid_categories]
     rules = [
