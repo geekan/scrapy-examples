@@ -7,15 +7,15 @@ Don't use it to do anything illegal!
 
 ***
 
-##Real spider example: doubanbook
+## Real spider example: doubanbook
 
-####Tutorial
+#### Tutorial
 
     git clone https://github.com/geekan/scrapy-examples
     cd scrapy-examples/doubanbook
     scrapy crawl doubanbook
 
-####Depth
+#### Depth
 
 There are several depths in the spider, and the spider gets
 real data from depth2.
@@ -24,12 +24,12 @@ real data from depth2.
 - Depth1: Urls like `http://book.douban.com/tag/外国文学` from depth0
 - Depth2: Urls like `http://book.douban.com/subject/1770782/` from depth1
 
-####Example image
+#### Example image
 ![douban book](https://raw.githubusercontent.com/geekan/scrapy-examples/master/doubanbook/sample.jpg)
 
 ***
 
-##Avaiable Spiders
+## Avaiable Spiders
 
 * tutorial
   * dmoz_item
